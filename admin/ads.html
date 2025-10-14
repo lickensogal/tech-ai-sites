@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ads Management | Admin Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/admin.css" />
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="logo">
+      <img src="../assets/images/logo.png" alt="TechAI Logo" />
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="posts.html">Posts</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="ads.html" class="active">Ads</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="subscribers.html">Subscribers</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <header class="admin-header">
+      <h1>Sponsored Ads Management</h1>
+      <button class="add-btn" id="addAdBtn">+ Add New Ad</button>
+    </header>
+
+    <section class="ads-section">
+      <div class="ad-carousel-preview">
+        <h2>Ad Carousel Preview</h2>
+        <div class="carousel" id="adCarousel">
+          <button class="carousel-btn prev" id="prevAd">‹</button>
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Ads will be dynamically added here -->
+          </div>
+          <button class="carousel-btn next" id="nextAd">›</button>
+        </div>
+      </div>
+
+      <div class="ads-list">
+        <h2>All Sponsored Ads</h2>
+        <table class="ads-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Image</th>
+              <th>Link</th>
+              <th>Duration (sec)</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adsTableBody">
+            <!-- Dynamic rows here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/ads.js"></script>
+</body>
+</html>

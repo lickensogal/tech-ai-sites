@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics Dashboard | TechAI Admin</title>
+  <link rel="stylesheet" href="../assets/css/admin.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="admin-container">
+    <aside class="admin-sidebar">
+      <h2>TechAI Admin</h2>
+      <nav>
+        <ul>
+          <li><a href="index.html">Dashboard</a></li>
+          <li><a href="posts.html">Posts</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="ads.html">Ads</a></li>
+          <li><a href="analytics.html" class="active">Analytics</a></li>
+          <li><a href="subscribers.html">Subscribers</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1>Analytics Overview</h1>
+      </header>
+
+      <section class="analytics-summary">
+        <div class="card">
+          <h3>Total Visits</h3>
+          <p id="totalVisits">0</p>
+        </div>
+        <div class="card">
+          <h3>Unique Visitors</h3>
+          <p id="uniqueVisitors">0</p>
+        </div>
+        <div class="card">
+          <h3>Avg. Session Time</h3>
+          <p id="sessionTime">0 mins</p>
+        </div>
+        <div class="card">
+          <h3>Top Page</h3>
+          <p id="topPage">Loading...</p>
+        </div>
+      </section>
+
+      <section class="analytics-charts">
+        <div class="chart-card">
+          <h3>Website Traffic (Last 7 Days)</h3>
+          <canvas id="trafficChart"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <h3>Top Categories</h3>
+          <canvas id="categoryChart"></canvas>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
+  <script src="../firebase/config.js"></script>
+  <script src="../firebase/firestore.js"></script>
+
+  <script>
+    const db = firebase.firestore();
+
+    // Elements
+    const totalVisitsEl = document.getElementById('totalVisits');
+    const uniqueVisitorsEl = document.getElementById('uniqueVisitors');
+    const sessionTimeEl = document.getElementById('sessionTime');
+    const topPageEl = document.getElementById('topPage');
+
+    // Load Analytics Data
+    async function loadAnalytics() {
+      // Example: Fetch summary metrics from Firestore 'analytics' collection
+      const snapshot = await db.collection('analytics-summary').doc('summary').get();
+      if(snapshot.exists){
+        const data = snapshot.data();
+        totalVisitsEl.textContent = data.totalVisits || 0;
+        uniqueVisitorsEl.textContent = data.uniqueVisitors || 0;
+        sessionTimeEl.textContent = data.avgSessionTime ? data.avgSessionTime + ' mins' : '0 mins';
+        topPageEl.textContent = data.topPage || 'N/A';
+      }
+
+      // Example: Traffic chart
+      const trafficSnapshot = await db.collection('analytics-traffic').orderBy('date', 'asc').get();
+      const labels = [];
+      const trafficData = [];
+      trafficSnapshot.forEach(doc => {
+        labels.push(doc.data().date);
+        trafficData.push(doc.data().visits);
+      });
+
+      new Chart(document.getElementById('trafficChart'), {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Visits',
+            data: trafficData,
+            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            tension: 0.3
+          }]
+        }
+      });
+
+      // Example: Top categories chart
+      const catSnapshot = await db.collection('analytics-top-categories').get();
+      const catLabels = [];
+      const catData = [];
+      catSnapshot.forEach(doc => {
+        const d = doc.data();
+        catLabels.push(d.category);
+        catData.push(d.visits);
+      });
+
+      new Chart(document.getElementById('categoryChart'), {
+        type: 'bar',
+        data: {
+          labels: catLabels,
+          datasets: [{
+            label: 'Visits',
+            data: catData,
+            backgroundColor: 'rgba(255, 99, 132, 0.6)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: { responsive: true }
+      });
+    }
+
+    loadAnalytics();
+  </script>
+</body>
+</html>

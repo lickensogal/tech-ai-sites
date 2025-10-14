@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add / Edit Post | Admin Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/posts.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="logo">
+      <img src="../assets/images/logo.png" alt="TechAI Logo">
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="posts.html" class="active">Posts</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="ads.html">Ads</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="subscribers.html">Subscribers</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <header class="admin-header">
+      <h1>Add / Edit Post</h1>
+    </header>
+
+    <section class="add-post-form">
+      <form id="postForm">
+        <!-- Title -->
+        <label for="title">Post Title</label>
+        <input type="text" id="title" name="title" required>
+
+        <!-- Main Category -->
+        <label for="main-category">Main Category</label>
+        <select id="main-category" name="mainCategory" required>
+          <option value="">Select Main Category</option>
+          <option value="Tech News & Reviews">Tech News & Reviews</option>
+          <option value="AI & Productivity Tools">AI & Productivity Tools</option>
+          <option value="Product Comparisons">Product Comparisons</option>
+          <option value="Buying Guides & Tips">Buying Guides & Tips</option>
+        </select>
+
+        <!-- Subcategory -->
+        <label for="sub-category">Subcategory</label>
+        <select id="sub-category" name="subCategory" required>
+          <option value="">Select Subcategory</option>
+        </select>
+
+        <!-- Featured Image -->
+        <label for="featured-image">Featured Image</label>
+        <input type="file" id="featured-image" name="featuredImage" accept="image/*">
+
+        <!-- Featured Post Toggle -->
+        <label>
+          <input type="checkbox" id="featured" name="featured">
+          Mark as Featured Post
+        </label>
+
+        <!-- Post Content -->
+        <label for="post-content">Post Content</label>
+        <div id="editor" style="height: 400px;"></div>
+
+        <!-- Publish Date -->
+        <label for="publish-date">Publish Date</label>
+        <input type="date" id="publish-date" name="publishDate" required>
+
+        <!-- Submit Button -->
+        <button type="submit" class="add-btn">Save Post</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Firebase & Quill -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
+  <script src="../firebase/config.js"></script>
+  <script src="../firebase/firestore.js"></script>
+  <script src="../firebase/storage.js"></script>
+  <script src="js/posts.js"></script>
+
+  <script>
+    // Initialize Quill
+    var quill = new Quill('#editor', {
+      theme: 'snow',
+      placeholder: 'Write your post content here...'
+    });
+
+    // Subcategories by main category
+    const mainCategorySelect = document.getElementById('main-category');
+    const subCategorySelect = document.getElementById('sub-category');
+    const subCategories = {
+      "Tech News & Reviews": ["Phones","Laptops","Accessories","Wearables","Cameras & Drones","Home Tech & Smart Gadgets","Gaming Tech","Emerging Tech / Innovations","Software & Apps","Tech Events / Launches"],
+      "AI & Productivity Tools": ["AI Tools","Productivity Software","Apps","Online Services","AI Writing Tools","AI Design Tools","AI Coding Tools","Tips & Tutorials"],
+      "Product Comparisons": ["Phones","Laptops & Tablets","Software","Accessories","Wearables","Cameras & Drones","AI Tools","Home Tech / Smart Gadgets"],
+      "Buying Guides & Tips": ["Beginners Guides","How-To Articles","Tips & Tricks","Best Buys in Kenya","Price Comparisons / Deals","Recommended Tools / Apps Lists"]
+    };
+
+    mainCategorySelect.addEventListener('change', function() {
+      const selected = this.value;
+      subCategorySelect.innerHTML = '<option value="">Select Subcategory</option>';
+      if(subCategories[selected]) {
+        subCategories[selected].forEach(sub => {
+          const option = document.createElement('option');
+          option.value = sub;
+          option.textContent = sub;
+          subCategorySelect.appendChild(option);
+        });
+      }
+    });
+
+    // Handle form submission with Firebase
+    const form = document.getElementById('postForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value;
+      const mainCategory = mainCategorySelect.value;
+      const subCategory = subCategorySelect.value;
+      const featured = document.getElementById('featured').checked;
+      const publishDate = document.getElementById('publish-date').value;
+      const content = quill.root.innerHTML;
+
+      const imageFile = document.getElementById('featured-image').files[0];
+      let imageUrl = '';
+
+      if(imageFile) {
+        const storageRef = firebase.storage().ref('post-images/' + Date.now() + '-' + imageFile.name);
+        const snapshot = await storageRef.put(imageFile);
+        imageUrl = await snapshot.ref.getDownloadURL();
+      }
+
+      // Save post to Firestore
+      const postRef = firebase.firestore().collection('posts').doc();
+      await postRef.set({
+        title,
+        mainCategory,
+        subCategory,
+        featured,
+        publishDate,
+        content,
+        imageUrl,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+
+      alert('Post saved successfully!');
+      form.reset();
+      quill.setContents([]);
+      subCategorySelect.innerHTML = '<option value="">Select Subcategory</option>';
+    });
+  </script>
+</body>
+  </html>

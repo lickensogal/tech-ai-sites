@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Posts | Admin Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="logo">
+      <img src="../assets/images/logo.png" alt="TechAI Logo">
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="posts.html" class="active">Posts</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="ads.html">Ads</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="subscribers.html">Subscribers</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <header class="admin-header">
+      <h1>Posts Management</h1>
+      <a href="add-post.html" class="add-btn">+ Add New Post</a>
+    </header>
+
+    <section class="posts-table-section">
+      <table class="posts-table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Main Category</th>
+            <th>Subcategory</th>
+            <th>Featured</th>
+            <th>Published Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="posts-tbody">
+          <!-- Posts will be dynamically loaded here -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/posts.js"></script>
+</body>
+</html>
