@@ -1,0 +1,28 @@
+{
+  "name": "tech-ai-site",
+  "version": "1.0.0",
+  "description": "A modern technology & AI tools blog with reviews, comparisons, and buying guides.",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --open=./index.html",
+    "build": "echo 'No build step configured'",
+    "deploy": "echo 'Deploy manually to Vercel or Firebase Hosting'"
+  },
+  "keywords": [
+    "technology",
+    "AI tools",
+    "tech reviews",
+    "product comparisons",
+    "buying guides"
+  ],
+  "author": "Lickens Ogal",
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^11.15.0",
+    "live-server": "^1.2.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
