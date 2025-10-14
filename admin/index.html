@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | TechAI</title>
+  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/navbar.css">
+  <link rel="stylesheet" href="../assets/css/footer.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="logo">
+      <img src="../assets/images/logo.png" alt="TechAI Logo">
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="index.html" class="active">Dashboard</a></li>
+        <li><a href="posts.html">Posts</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="ads.html">Ads</a></li>
+        <li><a href="analytics.html">Analytics</a></li>
+        <li><a href="subscribers.html">Subscribers</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <header class="admin-header">
+      <h1>Dashboard</h1>
+    </header>
+
+    <section class="dashboard-cards">
+      <div class="card">
+        <h2>Total Posts</h2>
+        <p id="total-posts">0</p>
+      </div>
+      <div class="card">
+        <h2>Total Ads</h2>
+        <p id="total-ads">0</p>
+      </div>
+      <div class="card">
+        <h2>Total Visitors</h2>
+        <p id="total-visitors">0</p>
+      </div>
+      <div class="card">
+        <h2>Total Subscribers</h2>
+        <p id="total-subscribers">0</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
