@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechAI - Home</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/posts.css">
+  <link rel="stylesheet" href="assets/css/ads.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <include src="components/navbar.html"></include>
+
+  <!-- Hero Slider -->
+  <section class="hero-slider">
+    <div class="slider-container">
+      <div class="slide active">
+        <img src="assets/images/hero-slider/slide1.jpg" alt="Slide 1">
+        <div class="slide-text">
+          <h2>Latest Tech News & Reviews</h2>
+          <p>Stay updated with the newest gadgets and software.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="assets/images/hero-slider/slide2.jpg" alt="Slide 2">
+        <div class="slide-text">
+          <h2>AI & Productivity Tools</h2>
+          <p>Boost your workflow with cutting-edge tools.</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="assets/images/hero-slider/slide3.jpg" alt="Slide 3">
+        <div class="slide-text">
+          <h2>Product Comparisons & Buying Guides</h2>
+          <p>Find the best tech deals in Kenya.</p>
+        </div>
+      </div>
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Featured Posts -->
+  <section class="featured-posts">
+    <h2 class="section-title">Featured Posts</h2>
+    <div class="posts-grid">
+      <include src="components/post-card.html"></include>
+      <include src="components/post-card.html"></include>
+      <include src="components/post-card.html"></include>
+    </div>
+  </section>
+
+  <!-- Latest Posts -->
+  <section class="latest-posts">
+    <h2 class="section-title">Latest Posts</h2>
+    <div class="posts-grid">
+      <include src="components/post-card.html"></include>
+      <include src="components/post-card.html"></include>
+      <include src="components/post-card.html"></include>
+      <include src="components/post-card.html"></include>
+    </div>
+    <div class="see-more">
+      <a href="browse-categories.html">See More Posts</a>
+    </div>
+  </section>
+
+  <!-- Sponsored Ads Carousel -->
+  <section class="sponsored-ads">
+    <h2 class="section-title">Sponsored Ads</h2>
+    <include src="components/ad-carousel.html"></include>
+  </section>
+
+  <!-- Footer -->
+  <include src="components/footer.html"></include>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/ads.js"></script>
+</body>
+  </html>
