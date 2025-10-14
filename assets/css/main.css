@@ -1,0 +1,258 @@
+/* Hero Slider */
+.hero-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-text {
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+  color: #fff;
+}
+
+.slider-container .prev,
+.slider-container .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.slider-container .prev {
+  left: 10px;
+}
+
+.slider-container .next {
+  right: 10px;
+}
+
+/* Sections */
+.section-title {
+  font-family: 'Lexend', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 2rem 0 1rem 2rem;
+}
+
+.posts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 0 2rem;
+}
+
+.see-more {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.see-more a {
+  padding: 0.7rem 1.5rem;
+  background-color: #00d1b2;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.see-more a:hover {
+  background-color: #00b899;
+}
+
+/* Sponsored Ads */
+.sponsored-ads {
+  margin: 3rem 0;
+  padding: 0 2rem;
+  }
+/* Category Hero */
+.category-hero {
+  background-color: #00d1b2;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.category-hero h1 {
+  font-family: 'Lexend', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.category-hero p {
+  font-family: 'Lexend', sans-serif;
+  font-size: 1rem;
+}
+
+/* Related Subcategories */
+.related-subcategories {
+  margin: 3rem 0;
+  padding: 0 2rem;
+}
+
+.subcategories-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.subcategory-card {
+  flex: 1 1 200px;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.subcategory-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+/* === POLICY PAGES === */
+.policy-page {
+  padding: 100px 20px 50px;
+  background: #f9fafc;
+}
+
+.policy-page .container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 2rem;
+}
+
+.policy-page h1 {
+  color: #002b80;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.policy-page h2 {
+  color: #0047ff;
+  margin-top: 1.5rem;
+}
+
+.policy-page p {
+  margin-bottom: 1rem;
+  color: #333;
+}
+/* === ABOUT, CONTACT, ADVERTISE PAGES === */
+.about-page, .contact-page, .advertise-page {
+  padding: 100px 20px 50px;
+  background: #f9fafc;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+h1, h2 {
+  color: #002b80;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.highlight-box {
+  background: #eef4ff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  border-left: 4px solid #0047ff;
+}
+
+/* === Forms === */
+form {
+  margin-top: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #0047ff;
+  box-shadow: 0 0 0 2px rgba(0,71,255,0.1);
+}
+
+.btn-primary {
+  background: #0047ff;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #0031b8;
+}
+
+/* Contact Info */
+.contact-info {
+  margin-top: 2rem;
+  background: #eef4ff;
+  padding: 1rem;
+  border-radius: 8px;
+}

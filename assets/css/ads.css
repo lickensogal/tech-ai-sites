@@ -1,0 +1,48 @@
+/* Sponsored Ads Carousel */
+.ad-carousel {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 1rem 0;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+}
+
+.ad-slide {
+  display: none;
+  width: 100%;
+  text-align: center;
+}
+
+.ad-slide.active {
+  display: block;
+}
+
+.ad-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.ad-carousel .ad-prev,
+.ad-carousel .ad-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.ad-carousel .ad-prev {
+  left: 10px;
+}
+
+.ad-carousel .ad-next {
+  right: 10px;
+}
