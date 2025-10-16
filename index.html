@@ -12,8 +12,8 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <include src="components/navbar.html"></include>
+  <!-- Navbar (loaded dynamically by main.js) -->
+  <header id="site-navbar"></header>
 
   <!-- Hero Slider -->
   <section class="hero-slider">
@@ -47,21 +47,16 @@
   <!-- Featured Posts -->
   <section class="featured-posts">
     <h2 class="section-title">Featured Posts</h2>
-    <div class="posts-grid">
-      <include src="components/post-card.html"></include>
-      <include src="components/post-card.html"></include>
-      <include src="components/post-card.html"></include>
+    <div class="posts-grid" id="featured-posts-container">
+      <!-- JS will dynamically inject post cards here -->
     </div>
   </section>
 
   <!-- Latest Posts -->
   <section class="latest-posts">
     <h2 class="section-title">Latest Posts</h2>
-    <div class="posts-grid">
-      <include src="components/post-card.html"></include>
-      <include src="components/post-card.html"></include>
-      <include src="components/post-card.html"></include>
-      <include src="components/post-card.html"></include>
+    <div class="posts-grid" id="latest-posts-container">
+      <!-- JS will dynamically inject latest post cards here -->
     </div>
     <div class="see-more">
       <a href="browse-categories.html">See More Posts</a>
@@ -71,12 +66,15 @@
   <!-- Sponsored Ads Carousel -->
   <section class="sponsored-ads">
     <h2 class="section-title">Sponsored Ads</h2>
-    <include src="components/ad-carousel.html"></include>
+    <div id="ad-carousel-container">
+      <!-- JS will dynamically inject ad carousel here -->
+    </div>
   </section>
 
-  <!-- Footer -->
-  <include src="components/footer.html"></include>
+  <!-- Footer (loaded dynamically by main.js) -->
+  <footer id="site-footer"></footer>
 
+  <!-- Scripts -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/ads.js"></script>
