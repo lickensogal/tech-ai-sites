@@ -1,27 +1,44 @@
 // assets/js/main.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Helper to load HTML components
-  async function loadComponent(selector, url) {
-    const container = document.querySelector(selector);
-    if (!container) return;
+  // Utility to load HTML into an element
+  const loadHTML = async (url, selector) => {
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error(`Failed to load ${url}`);
       const html = await res.text();
-      container.innerHTML = html;
+      document.querySelector(selector).innerHTML = html;
     } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   // Load navbar and footer
-  loadComponent("header", "/components/navbar.html");
-  loadComponent("footer", "/components/footer.html");
+  loadHTML("components/navbar.html", "#site-navbar");
+  loadHTML("components/footer.html", "#site-footer");
 
-  // =======================
-  // Hero Slider Initialization
-  // =======================
+  // Load post-cards for featured posts
+  const featuredContainer = document.getElementById("featured-posts-container");
+  const latestContainer = document.getElementById("latest-posts-container");
+
+  const postCount = 3; // Featured posts
+  const latestCount = 4; // Latest posts
+
+  const loadPostCards = async (container, count) => {
+    for (let i = 0; i < count; i++) {
+      const res = await fetch("components/post-card.html");
+      const html = await res.text();
+      container.insertAdjacentHTML("beforeend", html);
+    }
+  };
+
+  loadPostCards(featuredContainer, postCount);
+  loadPostCards(latestContainer, latestCount);
+
+  // Load ad carousel
+  loadHTML("components/ad-carousel.html", "#ad-carousel-container");
+
+  // === Hero Slider ===
   const slides = document.querySelectorAll(".slide");
   const nextBtn = document.querySelector(".next");
   const prevBtn = document.querySelector(".prev");
@@ -45,7 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
     nextBtn.addEventListener("click", nextSlide);
     prevBtn.addEventListener("click", prevSlide);
 
-    // Auto-slide every 5s
     let autoSlide = setInterval(nextSlide, 5000);
 
     if (slider) {
