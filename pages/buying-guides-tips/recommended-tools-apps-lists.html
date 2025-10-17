@@ -47,50 +47,16 @@
       </ul>
     </section>
   </main>
-
-  <!-- Footer -->
-  <div id="footer"></div>
-  <!-- Footer Container -->
+<!-- Footer -->
 <footer id="site-footer"></footer>
 
-<!-- Footer Loader Script -->
-<script>
-  // Dynamically load footer and fix relative links
-  async function loadFooter() {
-    try {
-      // Detect folder depth to adjust relative paths
-      const pathParts = window.location.pathname.split("/").filter(Boolean);
-      const depth = pathParts.length > 1 ? pathParts.length - 1 : 0;
-      const basePath = "../".repeat(depth);
-
-      // Load footer HTML
-      const res = await fetch(basePath + "components/footer.html");
-      if (!res.ok) throw new Error("Failed to load footer");
-      const html = await res.text();
-      document.getElementById("site-footer").innerHTML = html;
-
-      // Fix relative links inside footer
-      document.querySelectorAll("#site-footer a").forEach(link => {
-        let href = link.getAttribute("href");
-        if (href.startsWith("../")) {
-          link.href = basePath + href.replace(/^(\.\.\/)+/, "");
-        }
-      });
-
-      console.log("✅ Footer loaded successfully");
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  loadFooter();
-</script>
-
-  <!-- JS -->
-  <script src="../../assets/js/navbar.js"></script>
-  <script src="../../assets/js/posts.js"></script>
-  <script src="../../assets/js/ads.js"></script>
-  <script src="../../assets/js/analytics.js"></script>
+<!-- JS -->
+<script src="../../assets/js/footer.js"></script> <!-- adjust path -->
+<script src="../../assets/js/navbar.js"></script>
+<script src="../../assets/js/posts.js"></script>
+<script src="../../assets/js/ads.js"></script>
+<script src="../../assets/js/analytics.js"></script>
 </body>
-  </html>
+</html>
+
 
