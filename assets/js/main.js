@@ -1,7 +1,7 @@
 // assets/js/main.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Utility to load HTML into an element and fix relative paths if needed
+  // Utility to load HTML into an element
   const loadHTML = async (url, selector, fixLinks = false) => {
     try {
       const res = await fetch(url);
@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const html = await res.text();
       document.querySelector(selector).innerHTML = html;
 
-      // Fix relative links dynamically for navbar or footer
       if (fixLinks) {
         const pathParts = window.location.pathname.split("/").filter(Boolean);
         const basePath = pathParts.length > 1 ? "../".repeat(pathParts.length - 1) : "";
@@ -20,19 +19,38 @@ document.addEventListener("DOMContentLoaded", () => {
             link.href = basePath + href.replace(/^(\.\.\/)+/, "");
           }
         });
+
+        // --- NEW: Remember scroll position when clicking footer links ---
+        if (selector === "#site-footer") {
+          document.querySelectorAll(`${selector} a`).forEach(link => {
+            link.addEventListener("click", () => {
+              sessionStorage.setItem("scrollPos", window.scrollY);
+            });
+          });
+        }
       }
     } catch (err) {
       console.error(err);
     }
   };
 
-  // Load navbar and footer with link fixes
+  // Load navbar and footer with link fixing
   loadHTML("components/navbar.html", "#site-navbar", true);
   loadHTML("components/footer.html", "#site-footer", true);
+
+  // --- Restore scroll position after page load ---
+  const scrollPos = sessionStorage.getItem("scrollPos");
+  if (scrollPos) {
+    window.scrollTo(0, parseInt(scrollPos));
+    sessionStorage.removeItem("scrollPos");
+  }
 
   // Load post-cards for featured and latest posts
   const featuredContainer = document.getElementById("featured-posts-container");
   const latestContainer = document.getElementById("latest-posts-container");
+
+  const postCount = 3; // Featured posts
+  const latestCount = 4; // Latest posts
 
   const loadPostCards = async (container, count) => {
     for (let i = 0; i < count; i++) {
@@ -42,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  loadPostCards(featuredContainer, 3); // Featured posts
-  loadPostCards(latestContainer, 4);   // Latest posts
+  loadPostCards(featuredContainer, postCount);
+  loadPostCards(latestContainer, latestCount);
 
   // Load ad carousel
   loadHTML("components/ad-carousel.html", "#ad-carousel-container");
@@ -74,10 +92,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let autoSlide = setInterval(nextSlide, 5000);
 
-    slider.addEventListener("mouseover", () => clearInterval(autoSlide));
-    slider.addEventListener("mouseleave", () => {
-      autoSlide = setInterval(nextSlide, 5000);
-    });
+    if (slider) {
+      slider.addEventListener("mouseover", () => clearInterval(autoSlide));
+      slider.addEventListener("mouseleave", () => {
+        autoSlide = setInterval(nextSlide, 5000);
+      });
+    }
 
     console.log("✅ Hero Slider initialized successfully");
   }
