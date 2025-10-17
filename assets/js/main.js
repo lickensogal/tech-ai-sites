@@ -8,6 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!res.ok) throw new Error(`Failed to load ${url}`);
       const html = await res.text();
       document.querySelector(selector).innerHTML = html;
+
+      // If this is the footer, fix relative links
+      if (selector === "#site-footer") {
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        const basePath = pathParts.length > 1 ? "../".repeat(pathParts.length - 1) : "";
+
+        document.querySelectorAll("#site-footer a").forEach(link => {
+          let href = link.getAttribute("href");
+          if (href.startsWith("../")) {
+            link.href = basePath + href.replace(/^(\.\.\/)+/, "");
+          }
+        });
+      }
     } catch (err) {
       console.error(err);
     }
