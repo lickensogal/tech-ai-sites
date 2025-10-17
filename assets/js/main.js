@@ -1,20 +1,20 @@
 // assets/js/main.js
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Utility to load HTML into an element
-  const loadHTML = async (url, selector) => {
+  // Utility to load HTML into an element and fix relative paths if needed
+  const loadHTML = async (url, selector, fixLinks = false) => {
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error(`Failed to load ${url}`);
       const html = await res.text();
       document.querySelector(selector).innerHTML = html;
 
-      // If this is the footer, fix relative links
-      if (selector === "#site-footer") {
+      // Fix relative links dynamically for navbar or footer
+      if (fixLinks) {
         const pathParts = window.location.pathname.split("/").filter(Boolean);
         const basePath = pathParts.length > 1 ? "../".repeat(pathParts.length - 1) : "";
 
-        document.querySelectorAll("#site-footer a").forEach(link => {
+        document.querySelectorAll(`${selector} a`).forEach(link => {
           let href = link.getAttribute("href");
           if (href.startsWith("../")) {
             link.href = basePath + href.replace(/^(\.\.\/)+/, "");
@@ -26,16 +26,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Load navbar and footer
-  loadHTML("components/navbar.html", "#site-navbar");
-  loadHTML("components/footer.html", "#site-footer");
+  // Load navbar and footer with link fixes
+  loadHTML("components/navbar.html", "#site-navbar", true);
+  loadHTML("components/footer.html", "#site-footer", true);
 
-  // Load post-cards for featured posts
+  // Load post-cards for featured and latest posts
   const featuredContainer = document.getElementById("featured-posts-container");
   const latestContainer = document.getElementById("latest-posts-container");
-
-  const postCount = 3; // Featured posts
-  const latestCount = 4; // Latest posts
 
   const loadPostCards = async (container, count) => {
     for (let i = 0; i < count; i++) {
@@ -45,8 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  loadPostCards(featuredContainer, postCount);
-  loadPostCards(latestContainer, latestCount);
+  loadPostCards(featuredContainer, 3); // Featured posts
+  loadPostCards(latestContainer, 4);   // Latest posts
 
   // Load ad carousel
   loadHTML("components/ad-carousel.html", "#ad-carousel-container");
@@ -77,12 +74,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let autoSlide = setInterval(nextSlide, 5000);
 
-    if (slider) {
-      slider.addEventListener("mouseover", () => clearInterval(autoSlide));
-      slider.addEventListener("mouseleave", () => {
-        autoSlide = setInterval(nextSlide, 5000);
-      });
-    }
+    slider.addEventListener("mouseover", () => clearInterval(autoSlide));
+    slider.addEventListener("mouseleave", () => {
+      autoSlide = setInterval(nextSlide, 5000);
+    });
 
     console.log("✅ Hero Slider initialized successfully");
   }
