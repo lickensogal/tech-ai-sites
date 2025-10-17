@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TechAI - Home</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/navbar.css">
   <link rel="stylesheet" href="assets/css/footer.css">
@@ -48,7 +50,7 @@
   <section class="featured-posts">
     <h2 class="section-title">Featured Posts</h2>
     <div class="posts-grid" id="featured-posts-container">
-      <!-- JS will dynamically inject post cards here -->
+      <!-- JS dynamically injects post cards -->
     </div>
   </section>
 
@@ -56,7 +58,7 @@
   <section class="latest-posts">
     <h2 class="section-title">Latest Posts</h2>
     <div class="posts-grid" id="latest-posts-container">
-      <!-- JS will dynamically inject latest post cards here -->
+      <!-- JS dynamically injects latest posts -->
     </div>
     <div class="see-more">
       <a href="browse-categories.html">See More Posts</a>
@@ -67,29 +69,17 @@
   <section class="sponsored-ads">
     <h2 class="section-title">Sponsored Ads</h2>
     <div id="ad-carousel-container">
-      <!-- JS will dynamically inject ad carousel here -->
+      <!-- JS dynamically injects ad carousel -->
     </div>
   </section>
 
-  <!-- Footer (loaded dynamically) -->
+  <!-- Footer -->
   <footer id="site-footer"></footer>
 
-  <!-- Scripts -->
+  <!-- JS -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/ads.js"></script>
-
-  <!-- Footer Loader -->
-  <script>
-    // Dynamically load footer
-    function loadFooter() {
-      fetch("components/footer.html")
-        .then(res => res.text())
-        .then(html => document.getElementById("site-footer").innerHTML = html)
-        .catch(err => console.error("Footer failed to load:", err));
-    }
-    loadFooter();
-  </script>
-
+  <script src="assets/js/footer.js"></script>
 </body>
-  </html>
+</html>
