@@ -45,7 +45,7 @@ body {
   position: absolute;
   bottom: 30px;
   left: 50px;
-  color: #fff;
+  color: #eef4ff;
 }
 
 .slider-container .prev,
@@ -54,7 +54,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0,0,0,0.5);
-  color: #fff;
+  color: #000;
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
@@ -187,3 +187,4 @@ body {
   .footer-section.newsletter input[type="email"], 
   .footer-section.newsletter button { width: 100%; border-radius: 4px; margin-bottom: 0.5rem; }
                                 }
+
