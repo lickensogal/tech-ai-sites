@@ -71,12 +71,25 @@
     </div>
   </section>
 
-  <!-- Footer (loaded dynamically by main.js) -->
+  <!-- Footer (loaded dynamically) -->
   <footer id="site-footer"></footer>
 
   <!-- Scripts -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/ads.js"></script>
+
+  <!-- Footer Loader -->
+  <script>
+    // Dynamically load footer
+    function loadFooter() {
+      fetch("components/footer.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("site-footer").innerHTML = html)
+        .catch(err => console.error("Footer failed to load:", err));
+    }
+    loadFooter();
+  </script>
+
 </body>
   </html>
