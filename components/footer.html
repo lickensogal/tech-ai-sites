@@ -1,58 +1,320 @@
-<!-- Footer -->
-<footer class="footer">
-  <div class="container footer-container">
-    
-    <!-- Quick Links -->
-    <div class="footer-section">
+<!-- ===== Modern Footer Start ===== -->
+<footer class="site-footer" id="footer">
+  <!-- Top: Logo + Mini About -->
+  <div class="footer-top">
+    <div class="footer-logo">
+      <img src="/assets/images/logo.png" alt="TechAI Logo" class="logo">
+      <p class="site-desc">
+        Explore innovations, AI tools, tutorials, and tech news shaping the digital world.
+      </p>
+      <p class="mini-about">
+        <strong>About TechAI:</strong> We simplify technology, guide creators, and inspire innovation for everyone. Stay informed with our expert insights and practical guides.
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Middle: Quick Links & Policies -->
+  <div class="footer-links-row">
+    <span class="footer-links-left">
       <h3>Quick Links</h3>
       <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../about.html">About Us</a></li>
-        <li><a href="../contact.html">Contact Us</a></li>
-        <li><a href="../advertise.html">Advertise With Us</a></li>
-        <li><a href="../browse-categories.html">Browse All Categories</a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/about.html">About Us</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+        <li><a href="/advertise.html">Advertise With Us</a></li>
+        <li><a href="/browse-categories.html">Browse All Categories</a></li>
+        <li><a href="/sitemap.html">Sitemap</a></li>
       </ul>
-    </div>
+    </span>
 
-    <!-- Policies -->
-    <div class="footer-section">
+    <span class="footer-links-right">
       <h3>Policies</h3>
       <ul>
-        <li><a href="../policies/terms-of-use.html">Terms of Use</a></li>
-        <li><a href="../policies/privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="../policies/disclaimer.html">Disclaimer</a></li>
+        <li><a href="/policies/terms-of-use.html">Terms of Use</a></li>
+        <li><a href="/policies/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/policies/disclaimer.html">Disclaimer</a></li>
+        <li><a href="/policies/cookie-policy.html">Cookie Policy</a></li>
+        <li><a href="/policies/dmca.html">DMCA Notice</a></li>
+        <li><a href="/policies/manage-cookies.html">Manage Cookies</a></li>
       </ul>
-    </div>
-
-    <!-- Contact & Advertise -->
-    <div class="footer-section">
-      <h3>Contact</h3>
-      <ul>
-        <li><a href="../contact.html">Contact Us</a></li>
-        <li><a href="../advertise.html">Advertise With Us</a></li>
-      </ul>
-    </div>
-
-    <!-- Newsletter -->
-    <div class="footer-section newsletter">
-      <h3>Newsletter</h3>
-      <form id="newsletter-form">
-        <input type="email" placeholder="Your email" required>
-        <button type="submit">Subscribe</button>
-      </form>
-      <!-- Social links -->
-      <div class="social-icons">
-        <a href="#" target="_blank">Facebook</a>
-        <a href="#" target="_blank">Instagram</a>
-        <a href="#" target="_blank">X</a>
-        <a href="#" target="_blank">LinkedIn</a>
-      </div>
-    </div>
-
+    </span>
   </div>
 
-  <!-- Copyright -->
+  <hr class="divider">
+
+  <!-- Newsletter -->
+  <div class="footer-newsletter">
+    <h3>Newsletter</h3>
+    <p>Join our newsletter to receive practical tech insights, AI tutorials, and exclusive updates directly in your inbox. Your privacy is respected and we never spam.</p>
+    <form id="newsletter-form">
+      <input type="email" placeholder="Your email" required>
+      <label>
+        <input type="checkbox" required> I agree to the <a href="/policies/terms-of-use.html">Terms of Service</a>
+      </label>
+      <button type="submit">Subscribe</button>
+    </form>
+    <div id="success-popup" class="popup">🎉 Subscription successful! Thank you for joining TechAI.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Trust Badges -->
+  <div class="trust-badges">
+    <img src="/assets/images/badge-secure.png" alt="Secure Site" title="Secure Site">
+    <img src="/assets/images/badge-verified.png" alt="Verified Source" title="Verified Source">
+    <img src="/assets/images/badge-trusted.png" alt="Trusted Brand" title="Trusted Brand">
+  </div>
+
+  <hr class="divider">
+
+  <!-- Social Media -->
+  <div class="footer-social">
+    <h3>Follow Us</h3>
+    <div class="social-icons">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Contact Info -->
+  <div class="footer-contact">
+    <p><strong>Address:</strong> Nairobi, Kenya</p>
+    <p><strong>Phone:</strong> +254 700 000 000 | <strong>WhatsApp:</strong> +254 700 000 000</p>
+    <p><strong>Email:</strong> info@techai.com</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Bottom: Credits + Back to Top -->
   <div class="footer-bottom">
-    <p>© 2025 TechAI. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> TechAI. All rights reserved.</p>
+    <p class="credits">Build & Developed by <strong>Lickens Ogal</strong></p>
+    <a href="#top" class="back-to-top">↑ Back to Top</a>
   </div>
 </footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const form = document.getElementById("newsletter-form");
+  const popup = document.getElementById("success-popup");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    popup.classList.add("show");
+    setTimeout(() => popup.classList.remove("show"), 4000);
+    form.reset();
+  });
+</script>
+
+<style>
+/* ===== Footer Styling (Brand-Aligned) ===== */
+.site-footer {
+  background-color: #2D3E50; /* Brand dark blue-gray */
+  padding: 80px 40px;
+  font-family: 'Lexend Deca', sans-serif;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.6;
+}
+
+/* Top: Logo + Mini About */
+.footer-top {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.footer-logo .logo {
+  width: 140px;
+  margin-bottom: 16px;
+}
+
+.site-desc, .mini-about {
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  max-width: 600px;
+  margin: 8px auto;
+  line-height: 1.5;
+}
+
+/* Links */
+.footer-links-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-links-row span {
+  display: inline-block;
+  width: 100%;
+}
+
+.footer-links-left h3, .footer-links-right h3 {
+  color: #FFFFFF;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.footer-links-left ul, .footer-links-right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links-left ul li, .footer-links-right ul li {
+  margin-bottom: 12px;
+}
+
+.footer-links-left ul li a, .footer-links-right ul li a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links-left ul li a:hover, .footer-links-right ul li a:hover {
+  color: #FF7A59;
+}
+
+/* Newsletter */
+.footer-newsletter {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.footer-newsletter h3 {
+  color: #FFFFFF;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.footer-newsletter input[type="email"] {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #4A5B67;
+  background: #FFF;
+  color: #33475B;
+  margin-bottom: 12px;
+}
+
+.footer-newsletter button {
+  background-color: #FF7A59;
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.footer-newsletter button:hover {
+  background-color: #FF5C35;
+}
+
+/* Newsletter popup */
+.popup {
+  display: none;
+  background: #FF7A59;
+  color: #FFF;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 8px;
+}
+.popup.show { display: block; }
+
+/* Trust badges */
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.trust-badges img {
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+.trust-badges img:hover {
+  transform: scale(1.1);
+}
+
+/* Social Media */
+.footer-social h3 {
+  color: #FFFFFF;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: rgba(255,255,255,0.7);
+  font-size: 22px;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #FF7A59;
+}
+
+/* Contact */
+.footer-contact {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 40px;
+}
+
+/* Bottom */
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 20px;
+}
+.footer-bottom .credits {
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* Back to Top */
+.back-to-top {
+  display: inline-block;
+  margin-top: 8px;
+  color: #FF7A59;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+.back-to-top:hover {
+  color: #FF5C35;
+}
+
+/* Divider */
+.divider {
+  border: 0;
+  height: 1px;
+  background: rgba(51,71,91,0.15);
+  margin: 40px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-links-row { grid-template-columns: 1fr; }
+  .trust-badges { flex-wrap: wrap; }
+}
+  </style>
