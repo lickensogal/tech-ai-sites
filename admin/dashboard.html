@@ -23,6 +23,7 @@
         <li><a href="ads.html">Ads</a></li>
         <li><a href="analytics.html">Analytics</a></li>
         <li><a href="subscribers.html">Subscribers</a></li>
+        <li><a href="#" id="logout-btn">Logout</a></li>
       </ul>
     </nav>
   </aside>
@@ -52,10 +53,23 @@
       </div>
     </section>
   </main>
-<li><a href="#" id="logout-btn">Logout</a></li>
+<script>
+  // Redirect to login if not logged in
+  if (localStorage.getItem("adminLoggedIn") !== "true") {
+    window.location.href = "login.html";
+  }
+
+  // Logout functionality
+  const logoutBtn = document.getElementById("logout-btn");
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("adminLoggedIn");
+    window.location.href = "login.html";
+  });
+</script>
   <script src="js/dashboard.js"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>
+
 
 
