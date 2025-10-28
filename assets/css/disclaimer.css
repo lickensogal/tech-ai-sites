@@ -1,0 +1,128 @@
+/* === DISCLAIMER PAGE STYLES WITH SECTION HIGHLIGHTS === */
+
+/* Container & Page Setup */
+.policy-page {
+  background-color: #FFFFFF;
+  color: #33475B;
+  font-family: 'Lexend Deca', sans-serif;
+  line-height: 1.7;
+  padding: 2rem 1rem;
+}
+
+.policy-page .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* space between sections */
+}
+
+/* Section Highlight */
+.policy-page section {
+  background-color: #F9FAFB; /* soft light gray */
+  border-left: 4px solid #FF7A59; /* brand accent */
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+/* Headings */
+.policy-page h1,
+.policy-page h2,
+.policy-page h3,
+.policy-page h4,
+.policy-page h5,
+.policy-page h6 {
+  font-family: 'Queens', serif;
+  color: #192732;
+  margin-bottom: 1rem;
+}
+
+.policy-page h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.policy-page h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Paragraphs */
+.policy-page p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #33475B;
+}
+
+/* Strong / Highlights */
+.policy-page strong {
+  font-weight: 700;
+  color: #192732;
+}
+
+/* Links */
+.policy-page a {
+  color: #FF7A59;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.policy-page a:hover {
+  color: #FF5C35;
+}
+
+/* Lists */
+.policy-page ul,
+.policy-page ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.policy-page li {
+  margin-bottom: 0.5rem;
+}
+
+/* Section Dividers */
+.policy-page h2::before {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #FF7A59;
+  margin-bottom: 0.5rem;
+  border-radius: 2px;
+}
+
+/* Last Updated */
+.policy-page p:last-of-type {
+  font-size: 0.9rem;
+  color: #667788;
+  text-align: right;
+  margin-top: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .policy-page .container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .policy-page h1 {
+    font-size: 2rem;
+  }
+
+  .policy-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .policy-page p {
+    font-size: 0.95rem;
+  }
+  }
