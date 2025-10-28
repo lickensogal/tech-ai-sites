@@ -7,6 +7,36 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/navbar.css">
   <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/advertise.css">
+  <style>
+    /* Inline styling for success icon functionality */
+    .input-wrapper {
+      position: relative;
+    }
+    .success-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #27AE60;
+      font-size: 18px;
+      display: none;
+      pointer-events: none;
+    }
+    .input-wrapper.success input,
+    .input-wrapper.success textarea {
+      border-color: #27AE60;
+    }
+    .input-wrapper.success .success-icon {
+      display: inline;
+    }
+    #adSuccess {
+      display: none;
+      color: #27AE60;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
@@ -28,69 +58,97 @@
       <form id="adForm" class="ad-form">
         <div class="form-group">
           <label for="name">Full Name</label>
-          <input type="text" id="name" placeholder="Your Name" required>
+          <div class="input-wrapper">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <span class="success-icon">&#10003;</span>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="email">Email Address</label>
-          <input type="email" id="email" placeholder="Your Email" required>
+          <div class="input-wrapper">
+            <input type="email" id="email" placeholder="Your Email" required>
+            <span class="success-icon">&#10003;</span>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="company">Company / Brand Name</label>
-          <input type="text" id="company" placeholder="Company Name">
+          <div class="input-wrapper">
+            <input type="text" id="company" placeholder="Company Name">
+            <span class="success-icon">&#10003;</span>
+          </div>
         </div>
 
         <div class="form-group">
           <label for="message">Ad Details / Inquiry</label>
-          <textarea id="message" rows="5" placeholder="Tell us about your campaign..."></textarea>
+          <div class="input-wrapper">
+            <textarea id="message" rows="5" placeholder="Tell us about your campaign..."></textarea>
+            <span class="success-icon">&#10003;</span>
+          </div>
         </div>
 
         <button type="submit" class="btn-primary">Submit Request</button>
+        <div id="adSuccess">Your message has been submitted successfully!</div>
       </form>
     </section>
   </main>
 
   <!-- Footer -->
   <div id="footer"></div>
-  <!-- Footer Container -->
-<footer id="site-footer"></footer>
+  <footer id="site-footer"></footer>
 
-<!-- Footer Loader Script -->
-<script>
-  // Dynamically load footer and fix relative links
-  async function loadFooter() {
-    try {
-      // Detect folder depth to adjust relative paths
-      const pathParts = window.location.pathname.split("/").filter(Boolean);
-      const depth = pathParts.length > 1 ? pathParts.length - 1 : 0;
-      const basePath = "../".repeat(depth);
-
-      // Load footer HTML
-      const res = await fetch(basePath + "components/footer.html");
-      if (!res.ok) throw new Error("Failed to load footer");
-      const html = await res.text();
-      document.getElementById("site-footer").innerHTML = html;
-
-      // Fix relative links inside footer
-      document.querySelectorAll("#site-footer a").forEach(link => {
-        let href = link.getAttribute("href");
-        if (href.startsWith("../")) {
-          link.href = basePath + href.replace(/^(\.\.\/)+/, "");
-        }
-      });
-
-      console.log("✅ Footer loaded successfully");
-    } catch (err) {
-      console.error(err);
+  <!-- Footer Loader Script -->
+  <script>
+    async function loadFooter() {
+      try {
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        const depth = pathParts.length > 1 ? pathParts.length - 1 : 0;
+        const basePath = "../".repeat(depth);
+        const res = await fetch(basePath + "components/footer.html");
+        if (!res.ok) throw new Error("Failed to load footer");
+        const html = await res.text();
+        document.getElementById("site-footer").innerHTML = html;
+        document.querySelectorAll("#site-footer a").forEach(link => {
+          let href = link.getAttribute("href");
+          if (href.startsWith("../")) {
+            link.href = basePath + href.replace(/^(\.\.\/)+/, "");
+          }
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
-  }
-
-  loadFooter();
-</script>
+    loadFooter();
+  </script>
 
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/main.js"></script>
-</body>
-</html>
 
+  <!-- Form Submission Script -->
+  <script>
+    const form = document.getElementById('adForm');
+    const successMessage = document.getElementById('adSuccess');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const wrappers = form.querySelectorAll('.input-wrapper');
+      wrappers.forEach(wrapper => {
+        const input = wrapper.querySelector('input, textarea');
+        if (input.checkValidity()) {
+          wrapper.classList.add('success');
+        }
+      });
+
+      successMessage.style.display = 'block';
+
+      setTimeout(() => {
+        form.reset();
+        wrappers.forEach(wrapper => wrapper.classList.remove('success'));
+        successMessage.style.display = 'none';
+      }, 3000);
+    });
+  </script>
+</body>
+                                                 </html>
