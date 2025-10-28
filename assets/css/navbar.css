@@ -2,7 +2,6 @@
    Navbar Styles
 ========================= */
 
-/* Navbar container */
 .navbar {
   background: linear-gradient(90deg, #0047ff, #007bff);
   color: #fff;
@@ -24,8 +23,8 @@
 /* Flex container */
 .navbar .container {
   display: flex;
-  align-items: right;
-  justify-content: space-between;
+  align-items: center;           /* vertical centering */
+  justify-content: space-between; /* logo left, links+search right */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -70,7 +69,7 @@
   top: 2.5rem;
   left: 0;
   background: #1a1a1a;
-  min-width: 200px;
+  min-width: 180px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   border-radius: 4px;
   z-index: 999;
@@ -86,6 +85,48 @@
 
 .dropdown-menu li a:hover {
   color: #00d1b2;
+}
+
+/* Search */
+.search-wrapper {
+  display: flex;
+  align-items: center;   /* vertical centering */
+  margin-left: 1.5rem;
+  position: relative;
+  width: 30px;           /* collapsed width */
+  overflow: hidden;
+  transition: width 0.3s ease;
+}
+
+.search-wrapper.active {
+  width: 200px;          /* expanded width */
+}
+
+.search-wrapper input {
+  display: none;
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-wrapper.active input {
+  display: block;
+}
+
+.search-wrapper button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.search-wrapper button:hover {
+  color: #ffd700;
 }
 
 /* Hamburger menu (mobile) */
@@ -116,49 +157,10 @@
 }
 
 /* =========================
-   Search Styles
-========================= */
-.search-wrapper {
-  position: relative;
-  display: flex;
-  align-items: right;
-  transition: width 0.3s ease;
-  overflow: hidden;
-  width: 30px; /* initial as icon only */
-}
-
-.search-wrapper.active {
-  width: 200px; /* expanded width */
-}
-
-.search-wrapper input {
-  width: 100%;
-  padding: 6px 10px;
-  border: none;
-  border-radius: 4px;
-  outline: none;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  display: none; /* hidden initially */
-}
-
-.search-wrapper.active input {
-  display: block;
-}
-
-.search-wrapper button {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  cursor: pointer;
-  padding: 0 4px;
-}
-
-/* =========================
    Mobile Styles
 ========================= */
 @media (max-width: 768px) {
+
   .nav-links {
     position: absolute;
     top: 60px;
@@ -188,18 +190,11 @@
 
   /* Search on mobile */
   .search-wrapper {
-    order: 1;
-    margin-bottom: 10px;
     width: 100%;
+    margin: 0.5rem 0;
   }
 
-  .search-wrapper.active {
-    width: 100%;
-  }
-
-  .search-wrapper input {
-    display: block;
+  .search-wrapper.active input {
     width: calc(100% - 40px);
   }
 }
-
