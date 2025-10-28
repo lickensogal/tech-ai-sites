@@ -32,6 +32,11 @@
     const loginForm = document.getElementById('login-form');
     const loginMessage = document.getElementById('login-message');
 
+    // If already logged in, redirect to dashboard
+    if(localStorage.getItem("adminLoggedIn") === "true") {
+      window.location.href = "dashboard.html";
+    }
+
     loginForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
@@ -39,7 +44,9 @@
       const password = document.getElementById('password').value.trim();
 
       if(username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-        // Successful login
+        // Store login state
+        localStorage.setItem("adminLoggedIn", "true");
+
         loginMessage.style.color = "green";
         loginMessage.textContent = "Login successful! Redirecting...";
         setTimeout(() => {
