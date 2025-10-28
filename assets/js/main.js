@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  loadPostCards(featuredContainer, postCount);
-  loadPostCards(latestContainer, latestCount);
+  if (featuredContainer) loadPostCards(featuredContainer, postCount);
+  if (latestContainer) loadPostCards(latestContainer, latestCount);
 
   // Load ad carousel
   loadHTML("components/ad-carousel.html", "#ad-carousel-container");
@@ -110,21 +110,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const button = wrapper.querySelector("button");
 
       if (button && input) {
-        button.addEventListener("click", () => {
+        const performSearch = () => {
           const query = input.value.trim();
           if (query) {
             window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
           }
-        });
+        };
 
-        // Optional: enter key triggers search
+        button.addEventListener("click", performSearch);
         input.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") {
-            const query = input.value.trim();
-            if (query) {
-              window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
-            }
-          }
+          if (e.key === "Enter") performSearch();
         });
       }
     });
