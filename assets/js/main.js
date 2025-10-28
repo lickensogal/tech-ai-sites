@@ -1,5 +1,3 @@
-// assets/js/main.js
-
 document.addEventListener("DOMContentLoaded", () => {
   // Utility to load HTML into an element
   const loadHTML = async (url, selector, fixLinks = false) => {
@@ -34,11 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Load navbar and footer with link fixing
+  // Load navbar and footer
   loadHTML("components/navbar.html", "#site-navbar", true);
   loadHTML("components/footer.html", "#site-footer", true);
 
-  // Restore scroll position after page load
+  // Restore scroll position
   const scrollPos = sessionStorage.getItem("scrollPos");
   if (scrollPos) {
     window.scrollTo(0, parseInt(scrollPos));
@@ -60,17 +58,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  if (featuredContainer) loadPostCards(featuredContainer, postCount);
-  if (latestContainer) loadPostCards(latestContainer, latestCount);
+  loadPostCards(featuredContainer, postCount);
+  loadPostCards(latestContainer, latestCount);
 
-  // Load ad carousel
-  loadHTML("components/ad-carousel.html", "#ad-carousel-container");
+  // Load Sponsored Ads Carousel dynamically
+  const adContainer = document.getElementById("ad-carousel-container");
+  if (adContainer) {
+    fetch("components/ad-carousel.html")
+      .then(res => res.text())
+      .then(html => {
+        adContainer.innerHTML = html;
+
+        // Initialize ad carousel
+        const slides = adContainer.querySelectorAll(".ad-slide");
+        const prevBtn = adContainer.querySelector(".ad-prev");
+        const nextBtn = adContainer.querySelector(".ad-next");
+        let currentIndex = 0;
+
+        const showSlide = index => {
+          slides.forEach((slide, i) => slide.classList.toggle("active", i === index));
+        };
+
+        prevBtn.addEventListener("click", () => {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          showSlide(currentIndex);
+        });
+
+        nextBtn.addEventListener("click", () => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          showSlide(currentIndex);
+        });
+
+        // Auto-slide every 5 seconds
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % slides.length;
+          showSlide(currentIndex);
+        }, 5000);
+      })
+      .catch(err => console.error("Failed to load ad carousel:", err));
+  }
 
   // Hero Slider
-  const slides = document.querySelectorAll(".slide");
-  const nextBtn = document.querySelector(".next");
-  const prevBtn = document.querySelector(".prev");
-  const slider = document.querySelector(".hero-slider");
+  const slides = document.querySelectorAll(".hero-slider .slide");
+  const nextBtn = document.querySelector(".hero-slider .next");
+  const prevBtn = document.querySelector(".hero-slider .prev");
 
   if (slides.length && nextBtn && prevBtn) {
     let currentSlide = 0;
@@ -92,39 +123,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let autoSlide = setInterval(nextSlide, 5000);
 
-    if (slider) {
-      slider.addEventListener("mouseover", () => clearInterval(autoSlide));
-      slider.addEventListener("mouseleave", () => {
-        autoSlide = setInterval(nextSlide, 5000);
-      });
-    }
-
-    console.log("✅ Hero Slider initialized successfully");
+    const slider = document.querySelector(".hero-slider");
+    slider.addEventListener("mouseover", () => clearInterval(autoSlide));
+    slider.addEventListener("mouseleave", () => { autoSlide = setInterval(nextSlide, 5000); });
   }
 
-  // === Global Search Handler ===
+  // Search Handler
   const handleSearch = () => {
-    const searchWrappers = document.querySelectorAll(".search-wrapper");
-    searchWrappers.forEach(wrapper => {
+    document.querySelectorAll(".search-wrapper").forEach(wrapper => {
       const input = wrapper.querySelector("input");
       const button = wrapper.querySelector("button");
 
       if (button && input) {
-        const performSearch = () => {
+        button.addEventListener("click", () => {
           const query = input.value.trim();
-          if (query) {
-            window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
-          }
-        };
+          if (query) window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
+        });
 
-        button.addEventListener("click", performSearch);
-        input.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") performSearch();
+        input.addEventListener("keypress", e => {
+          if (e.key === "Enter") {
+            const query = input.value.trim();
+            if (query) window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
+          }
         });
       }
     });
   };
-
-  // Delay search init to ensure navbar is loaded dynamically
   setTimeout(handleSearch, 500);
 });
