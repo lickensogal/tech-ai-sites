@@ -6,14 +6,16 @@
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  padding: 0; /* Remove top spacing */
+  margin: 0;
 }
 
 .navbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0.8rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -22,7 +24,7 @@
 .navbar .logo {
   font-family: 'Queens', serif;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: #FF7A59;
 }
 
@@ -32,6 +34,7 @@
   gap: 1.5rem;
   list-style: none;
   align-items: center;
+  margin: 0;
 }
 
 .nav-links a {
@@ -93,10 +96,12 @@
   border: none;
   outline: none;
   font-size: 14px;
+  color: #192732;
 }
 
 .search-wrapper.active input {
   display: block;
+  background-color: #fff;
 }
 
 .search-wrapper button {
@@ -134,7 +139,7 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 70px;
+    top: 60px;
     right: 0;
     background-color: #192732;
     width: 100%;
@@ -163,4 +168,10 @@
   .dropdown-menu li a {
     padding: 0.8rem 1rem;
   }
+}
+
+/* === FIX WHITE GAP ABOVE HEADER === */
+body {
+  margin: 0;
+  padding: 0;
   }
