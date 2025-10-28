@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results | Tech AI Site</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <style>
+    /* Search Results Page Styles */
+    .search-results-page {
+      max-width: 1200px;
+      margin: 100px auto 40px; /* account for fixed navbar */
+      padding: 0 20px;
+      font-family: 'Lexend', sans-serif;
+      color: #33475B;
+    }
 
+    .search-results-page h1 {
+      font-family: 'Queens', serif;
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #192732;
+    }
+
+    .search-results-page p {
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #33475B;
+    }
+
+    .search-results {
+      list-style: none;
+      padding: 0;
+    }
+
+    .search-results li {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .search-results li a {
+      font-size: 18px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .search-results li a:hover {
+      color: #0047ff;
+    }
+
+    .search-results li p {
+      font-size: 14px;
+      margin-top: 5px;
+      color: #4A5B67;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <main class="search-results-page">
+    <h1>Search Results</h1>
+    <p>Showing results for: <strong id="search-query"></strong></p>
+
+    <ul class="search-results" id="search-results">
+      <!-- JS will dynamically populate results here -->
+    </ul>
+  </main>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <!-- Footer Loader -->
+  <script>
+    async function loadFooter() {
+      const res = await fetch("components/footer.html");
+      const html = await res.text();
+      document.getElementById("footer").innerHTML = html;
+    }
+    loadFooter();
+  </script>
+
+  <!-- Navbar Loader -->
+  <script src="assets/js/navbar.js"></script>
+
+  <!-- Search Script -->
+  <script>
+    // Get search query from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('q') || '';
+    document.getElementById('search-query').textContent = query;
+
+    // Dummy search results (replace with real search logic)
+    const results = [
+      {
+        title: "Latest AI Tools in 2025",
+        link: "pages/ai-productivity-tools/ai-tools.html",
+        description: "Explore the most recent AI tools that are transforming workflows."
+      },
+      {
+        title: "Top Laptops Reviewed",
+        link: "pages/tech-news-reviews/laptops.html",
+        description: "A comprehensive guide to the best laptops available in the market."
+      },
+      {
+        title: "AI Writing Tools for Beginners",
+        link: "pages/ai-productivity-tools/ai-writing-tools.html",
+        description: "Learn how AI writing tools can boost your productivity."
+      }
+    ];
+
+    const resultsContainer = document.getElementById('search-results');
+
+    results.forEach(item => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${item.link}">${item.title}</a><p>${item.description}</p>`;
+      resultsContainer.appendChild(li);
+    });
+  </script>
+</body>
+  </html>
