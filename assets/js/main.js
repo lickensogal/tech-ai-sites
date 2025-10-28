@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
 
-        // --- NEW: Remember scroll position when clicking footer links ---
+        // Remember scroll position when clicking footer links
         if (selector === "#site-footer") {
           document.querySelectorAll(`${selector} a`).forEach(link => {
             link.addEventListener("click", () => {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadHTML("components/navbar.html", "#site-navbar", true);
   loadHTML("components/footer.html", "#site-footer", true);
 
-  // --- Restore scroll position after page load ---
+  // Restore scroll position after page load
   const scrollPos = sessionStorage.getItem("scrollPos");
   if (scrollPos) {
     window.scrollTo(0, parseInt(scrollPos));
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load ad carousel
   loadHTML("components/ad-carousel.html", "#ad-carousel-container");
 
-  // === Hero Slider ===
+  // Hero Slider
   const slides = document.querySelectorAll(".slide");
   const nextBtn = document.querySelector(".next");
   const prevBtn = document.querySelector(".prev");
@@ -101,4 +101,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("✅ Hero Slider initialized successfully");
   }
+
+  // === Global Search Handler ===
+  const handleSearch = () => {
+    const searchWrappers = document.querySelectorAll(".search-wrapper");
+    searchWrappers.forEach(wrapper => {
+      const input = wrapper.querySelector("input");
+      const button = wrapper.querySelector("button");
+
+      if (button && input) {
+        button.addEventListener("click", () => {
+          const query = input.value.trim();
+          if (query) {
+            window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
+          }
+        });
+
+        // Optional: enter key triggers search
+        input.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            const query = input.value.trim();
+            if (query) {
+              window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
+            }
+          }
+        });
+      }
+    });
+  };
+
+  // Delay search init to ensure navbar is loaded dynamically
+  setTimeout(handleSearch, 500);
 });
