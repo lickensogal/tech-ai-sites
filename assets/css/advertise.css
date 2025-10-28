@@ -1,1 +1,248 @@
+/* =========================
+   Advertise With Us Page CSS
+========================= */
 
+/* Page & Container */
+.advertise-page {
+  background-color: #FFFFFF; /* primary background */
+  font-family: 'Lexend Deca', sans-serif;
+  color: #33475B;
+  line-height: 1.6;
+  padding: 80px 40px; /* desktop padding */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .advertise-page {
+    padding: 40px 20px; /* mobile padding */
+  }
+}
+
+/* Headings */
+.advertise-page h1 {
+  font-family: 'Queens', serif;
+  font-size: 56px; /* hero heading */
+  font-weight: 700;
+  color: #192732;
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+.advertise-page h2 {
+  font-family: 'Queens', serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #33475B;
+  line-height: 1.3;
+  margin-top: 48px;
+  margin-bottom: 20px;
+}
+
+/* Paragraphs */
+.advertise-page p {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: #33475B;
+}
+
+.advertise-page p strong {
+  color: #192732;
+}
+
+/* =========================
+   Why Advertise Here - Icon Bullets
+========================= */
+.advertise-page ul {
+  list-style: none; /* remove default bullets */
+  padding-left: 0;
+  margin-bottom: 24px;
+}
+
+.advertise-page ul li {
+  position: relative;
+  padding-left: 36px; /* space for icon */
+  margin-bottom: 16px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #33475B;
+  display: flex;
+  align-items: center;
+}
+
+/* Icon bullet - inline SVG (brand color) */
+.advertise-page ul li::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #FF7A59; /* main brand coral/orange */
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.advertise-page ul li:hover::before {
+  background-color: #FF5C35; /* accent orange on hover */
+  transform: translateY(-50%) scale(1.2);
+}
+
+.advertise-page ul li:hover {
+  color: #192732;
+}
+
+/* =========================
+   Form
+========================= */
+.advertise-page .ad-form {
+  margin-top: 40px;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(51,71,91,0.12);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+.advertise-page .ad-form:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* Form Groups */
+.advertise-page .form-group {
+  margin-bottom: 20px;
+}
+
+.advertise-page .form-group label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #33475B;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.advertise-page .form-group input,
+.advertise-page .form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: #33475B;
+  border: 1px solid #4A5B67;
+  border-radius: 6px;
+  background-color: #FFFFFF;
+  line-height: 1.5;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.advertise-page .form-group input:focus,
+.advertise-page .form-group textarea:focus {
+  border: 2px solid #FF7A59;
+  outline: none;
+}
+
+/* Placeholder */
+.advertise-page .form-group input::placeholder,
+.advertise-page .form-group textarea::placeholder {
+  color: rgba(74,91,103,0.6);
+}
+
+/* Button */
+.advertise-page .btn-primary {
+  background-color: #FF7A59;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.advertise-page .btn-primary:hover {
+  background-color: #FF5C35;
+  transform: scale(1.02);
+}
+
+/* =========================
+   Form Submission Success
+========================= */
+.advertise-page .form-success {
+  display: none;
+  margin-top: 20px;
+  padding: 16px;
+  background-color: #27AE60;
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 8px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Wrapper for input & icon */
+.advertise-page .input-wrapper {
+  position: relative;
+}
+
+.advertise-page .success-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #27AE60; /* brand green for success */
+  font-size: 18px;
+  display: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Show icon and green border when valid */
+.advertise-page .input-wrapper.success input,
+.advertise-page .input-wrapper.success textarea {
+  border: 2px solid #27AE60;
+}
+
+.advertise-page .input-wrapper.success .success-icon {
+  display: block;
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+/* Optional subtle animation */
+.advertise-page .input-wrapper.success .success-icon {
+  animation: pop 0.3s ease forwards;
+}
+
+@keyframes pop {
+  0% { transform: translateY(-50%) scale(0); opacity: 0; }
+  100% { transform: translateY(-50%) scale(1); opacity: 1; }
+  }
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .advertise-page h1 {
+    font-size: 48px;
+  }
+  .advertise-page h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .advertise-page h1 {
+    font-size: 36px;
+  }
+  .advertise-page h2 {
+    font-size: 28px;
+  }
+  .advertise-page .ad-form {
+    padding: 24px;
+  }
+}
