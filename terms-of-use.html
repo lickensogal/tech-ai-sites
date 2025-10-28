@@ -8,33 +8,210 @@
   <link rel="stylesheet" href="../assets/css/navbar.css" />
   <link rel="stylesheet" href="../assets/css/footer.css" />
 </head>
-<body>
-  <!-- Navbar -->
-  <div id="navbar"></div>
+<style>
+  /* === TERMS OF USE PAGE STYLES WITH ALTERNATING SECTIONS === */
 
-  <main class="policy-page">
+/* Container & Page Setup */
+.policy-page {
+  background-color: #FFFFFF;
+  color: #33475B;
+  font-family: 'Lexend Deca', sans-serif;
+  line-height: 1.7;
+  padding: 2rem 1rem;
+}
+
+.policy-page .container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Alternating Sections */
+.policy-page section {
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  border-left: 4px solid #FF7A59; /* brand accent */
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  margin-bottom: 1.5rem;
+  background-color: #FFFFFF; /* default white */
+}
+
+/* Odd / Even alternating backgrounds */
+.policy-page section:nth-child(odd) {
+  background-color: #F9FAFB; /* light gray */
+}
+
+.policy-page section:nth-child(even) {
+  background-color: #FFFFFF; /* white */
+}
+
+/* Headings */
+.policy-page h1,
+.policy-page h2,
+.policy-page h3,
+.policy-page h4,
+.policy-page h5,
+.policy-page h6 {
+  font-family: 'Queens', serif;
+  color: #192732;
+  margin-bottom: 1rem;
+}
+
+.policy-page h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.policy-page h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Paragraphs */
+.policy-page p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #33475B;
+}
+
+/* Strong / Highlights */
+.policy-page strong {
+  font-weight: 700;
+  color: #192732;
+}
+
+/* Links */
+.policy-page a {
+  color: #FF7A59;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.policy-page a:hover {
+  color: #FF5C35;
+}
+
+/* Lists */
+.policy-page ul,
+.policy-page ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.policy-page li {
+  margin-bottom: 0.5rem;
+}
+
+/* Section Divider Accent */
+.policy-page h2::before {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: #FF7A59;
+  margin-bottom: 0.5rem;
+  border-radius: 2px;
+}
+
+/* Last Updated */
+.policy-page p:last-of-type {
+  font-size: 0.9rem;
+  color: #667788;
+  text-align: right;
+  margin-top: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .policy-page .container {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .policy-page h1 {
+    font-size: 2rem;
+  }
+
+  .policy-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .policy-page p {
+    font-size: 0.95rem;
+  }
+
+  .policy-page section {
+    padding: 1rem;
+  }
+  }
+</style>
+  <body>
+  <!-- Navbar -->
+  <nav id="navbar" aria-label="Primary Navigation"></nav>
+
+  <main class="policy-page" role="main">
     <section class="container">
       <h1>Terms of Use</h1>
-      <p>Welcome to Tech AI Site. By accessing or using our website, you agree to comply with and be bound by these Terms of Use.</p>
+      <p>Welcome to <strong>Tech AI Site</strong>. By visiting and using this website, you agree to comply with and be bound by these Terms of Use. If you do not agree with any of these terms, please do not use our site.</p>
 
       <h2>1. Acceptance of Terms</h2>
-      <p>By using this site, you confirm that you accept these terms and agree to comply with them. If you disagree, please do not use the site.</p>
+      <p>These Terms govern your use of the Tech AI Site website, including all content, features, and services available without registration or login. By continuing to use this site, you confirm your acceptance of these Terms.</p>
 
       <h2>2. Use of Content</h2>
-      <p>All content on this site is for informational purposes only. You may not copy, reproduce, or redistribute any material without written permission.</p>
+      <p>The content provided on Tech AI Site is for informational and educational purposes only, primarily through blog posts and articles. You may view, read, and share this content for non-commercial personal use only. Reproduction, republication, or redistribution of any content without prior written permission is prohibited.</p>
 
-      <h2>3. User Conduct</h2>
-      <p>You agree not to engage in unlawful, abusive, or disruptive behavior on our platform.</p>
+      <h2>3. Third-Party Links and Services</h2>
+      <p>Tech AI Site may include links to third-party websites, products, services, or advertisements. These links are provided for your convenience and do not imply endorsement or affiliation. We do not control or guarantee the accuracy, reliability, or legality of content on external sites, nor do we assume responsibility for any dealings or interactions with such third parties.</p>
+      <p>By using links or services provided on or through our site, you agree that Tech AI Site is not liable for any loss or damage resulting from such use. We encourage you to review the terms, privacy policies, and user agreements of any third-party sites or services you visit.</p>
 
-      <h2>4. Updates to Terms</h2>
-      <p>We reserve the right to modify these terms at any time. Updates will be posted on this page with the revised date.</p>
+      <h2>4. Affiliate Disclosure</h2>
+      <p>Some links on this website may be affiliate links. This means we may earn commissions from qualifying purchases or actions at no extra cost to you. Such affiliate relationships do not influence the editorial content or recommendations on our site.</p>
+
+      <h2>5. User Responsibilities</h2>
+      <p>You agree to use this website lawfully and responsibly. You must not engage in any conduct that could disrupt the website, infringe on intellectual property rights, or violate applicable laws.</p>
+
+      <h2>6. No User Accounts or Logins</h2>
+      <p>Tech AI Site does not require or provide user account registration or login functionality at this time. All content and services are accessible without an account. Any future account-based features will be subject to additional terms communicated at the time.</p>
+
+      <h2>7. Intellectual Property Rights</h2>
+      <p>All content on Tech AI Site, including text, images, logos, and design elements, are owned by or licensed to us and protected by intellectual property laws. Unauthorized copying, distribution, or commercial use is strictly prohibited.</p>
+
+      <h2>8. Disclaimer of Warranties</h2>
+      <p>The website and its content are provided "as is" without warranties of any kind. Tech AI Site disclaims all warranties, express or implied, including but not limited to accuracy, completeness, or fitness for a particular purpose. We do not guarantee uninterrupted or error-free access.</p>
+
+      <h2>9. Limitation of Liability</h2>
+      <p>To the fullest extent permitted by law, Tech AI Site is not liable for any damages arising from your use of this site or reliance on its content, including direct, indirect, incidental, consequential, or punitive damages.</p>
+
+      <h2>10. Indemnification</h2>
+      <p>You agree to indemnify and hold Tech AI Site harmless from any claims, damages, or expenses arising from your violation of these Terms or your use of the website.</p>
+
+      <h2>11. Privacy</h2>
+      <p>Your use of the site is also governed by our <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, which explains how we collect and handle your information.</p>
+
+      <h2>12. Modifications to Terms</h2>
+      <p>We reserve the right to change or update these Terms of Use at any time without prior notice. Changes will be posted on this page with an updated revision date. Continued use following such changes constitutes acceptance of the revised Terms.</p>
+
+      <h2>13. Governing Law and Dispute Resolution</h2>
+      <p>These Terms are governed by the laws of the jurisdiction where Tech AI Site is operated. Any disputes will be subject to the exclusive jurisdiction of the competent courts within that jurisdiction.</p>
+
+      <h2>14. Severability</h2>
+      <p>If any provision of these Terms is held unlawful or unenforceable, the remaining provisions shall remain in full force and effect.</p>
+
+      <h2>15. Contact Information</h2>
+      <p>If you have any questions about these Terms, please contact us at <a href="mailto:support@techaisite.com">support@techaisite.com</a>.</p>
 
       <p><strong>Last updated:</strong> October 2025</p>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer id="site-footer"></footer>
+  <footer id="site-footer" role="contentinfo"></footer>
 
   <!-- JS -->
   <script src="../assets/js/footer.js"></script>
