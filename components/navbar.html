@@ -3,9 +3,9 @@
     <!-- Logo -->
     <a href="index.html" class="logo">TechAI</a>
 
-    <!-- Search Icon -->
+    <!-- Search Wrapper -->
     <div class="search-wrapper" id="search-wrapper">
-      <input type="text" placeholder="Search...">
+      <input type="text" id="globalSearchInput" placeholder="Search..." />
       <button id="search-toggle">&#128269;</button>
     </div>
 
@@ -103,4 +103,24 @@
     searchWrapper.classList.toggle('active');
     searchWrapper.querySelector('input').focus();
   });
-  </script>
+
+  // Global Search Function
+  const globalSearchInput = document.getElementById('globalSearchInput');
+  const globalSearchBtn = document.getElementById('search-toggle');
+
+  globalSearchBtn.addEventListener('click', () => {
+    const query = globalSearchInput.value.trim();
+    if(query) {
+      window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+    }
+  });
+
+  globalSearchInput.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter') {
+      const query = globalSearchInput.value.trim();
+      if(query) {
+        window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+      }
+    }
+  });
+            </script>
