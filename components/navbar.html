@@ -1,35 +1,34 @@
-<!-- components/navbar.html -->
-<nav class="navbar">
+<header class="navbar">
   <div class="container">
     <!-- Logo -->
-    <a href="index.html" class="logo">TechAI</a>
+    <a href="/" class="logo">TechAI</a>
+
+    <!-- Navigation Links -->
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li class="dropdown">
+        <a href="#">Categories</a>
+        <ul class="dropdown-menu">
+          <li><a href="/category/ai.html">AI</a></li>
+          <li><a href="/category/tech.html">Tech</a></li>
+          <li><a href="/category/gadgets.html">Gadgets</a></li>
+        </ul>
+      </li>
+      <li><a href="/about.html">About</a></li>
+      <li><a href="/contact.html">Contact</a></li>
+    </ul>
 
     <!-- Search -->
     <div class="search-wrapper">
-      <input type="text" placeholder="Search..." aria-label="Search">
-      <button type="button" aria-label="Search">
-        🔍
-      </button>
+      <input type="text" placeholder="Search...">
+      <button aria-label="Search"><i class="fas fa-search"></i></button>
     </div>
 
-    <!-- Nav Links -->
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="browse-categories.html">Categories</a></li>
-      <li class="dropdown">
-        <a href="#">More ▼</a>
-        <ul class="dropdown-menu">
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </li>
-    </ul>
-
-    <!-- Hamburger Menu (mobile) -->
+    <!-- Hamburger Menu (Mobile) -->
     <div class="menu-toggle">
       <span></span>
       <span></span>
       <span></span>
     </div>
   </div>
-</nav>
+</header>
