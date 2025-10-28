@@ -18,12 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         const dropdownMenu = toggle.nextElementSibling;
-        // Close other open dropdowns
-        dropdownToggles.forEach(otherToggle => {
-          if (otherToggle !== toggle) {
-            otherToggle.nextElementSibling.classList.remove("show");
-          }
-        });
         dropdownMenu.classList.toggle("show");
       }
     });
@@ -32,22 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- Search Expand / Collapse ---
   button?.addEventListener("click", () => {
     searchWrapper.classList.toggle("active");
-    if (searchWrapper.classList.contains("active")) {
-      input.focus();
-    }
+    if (searchWrapper.classList.contains("active")) input.focus();
   });
 
-  // --- Trigger search on Enter key ---
   input?.addEventListener("keypress", e => {
     if (e.key === "Enter") {
       const query = input.value.trim();
-      if (query) {
-        window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
-      }
+      if (query) window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
     }
   });
 
-  // --- Close mobile menu when clicking outside ---
+  // --- Close mobile menu if clicked outside ---
   document.addEventListener("click", e => {
     if (
       window.innerWidth <= 768 &&
@@ -56,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       navLinks.classList.remove("active");
       navToggle.classList.remove("open");
-      // Close all dropdowns
       dropdownToggles.forEach(toggle => {
         toggle.nextElementSibling.classList.remove("show");
       });
