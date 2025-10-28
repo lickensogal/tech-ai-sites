@@ -1,15 +1,27 @@
-<!-- Navbar -->
 <nav class="navbar">
   <div class="container">
     <!-- Logo -->
-    <a href="../index.html" class="logo">TechAI</a>
+    <a href="index.html" class="logo">TechAI</a>
 
-    <!-- Nav links -->
+    <!-- Search Icon -->
+    <div class="search-wrapper" id="search-wrapper">
+      <input type="text" placeholder="Search...">
+      <button id="search-toggle">&#128269;</button>
+    </div>
+
+    <!-- Hamburger for Mobile -->
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Nav Links -->
     <ul class="nav-links">
-      <li><a href="../about.html">About Us</a></li>
-      <li><a href="../contact.html">Contact Us</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
 
-      <!-- Tech News & Reviews Dropdown -->
+      <!-- Tech News & Reviews -->
       <li class="dropdown">
         <a href="#">Tech News & Reviews ▾</a>
         <ul class="dropdown-menu">
@@ -26,7 +38,7 @@
         </ul>
       </li>
 
-      <!-- AI & Productivity Tools Dropdown -->
+      <!-- AI & Productivity Tools -->
       <li class="dropdown">
         <a href="#">AI & Productivity Tools ▾</a>
         <ul class="dropdown-menu">
@@ -41,7 +53,7 @@
         </ul>
       </li>
 
-      <!-- Product Comparisons Dropdown -->
+      <!-- Product Comparisons -->
       <li class="dropdown">
         <a href="#">Product Comparisons ▾</a>
         <ul class="dropdown-menu">
@@ -56,7 +68,7 @@
         </ul>
       </li>
 
-      <!-- Buying Guides & Tips Dropdown -->
+      <!-- Buying Guides & Tips -->
       <li class="dropdown">
         <a href="#">Buying Guides & Tips ▾</a>
         <ul class="dropdown-menu">
@@ -68,7 +80,27 @@
           <li><a href="../pages/buying-guides-tips/recommended-tools-apps-lists.html">Recommended Tools / Apps Lists</a></li>
         </ul>
       </li>
-
     </ul>
   </div>
-  </nav>
+</nav>
+
+<!-- Navbar Scripts -->
+<script>
+  // Mobile Menu Toggle
+  const menuToggle = document.getElementById('mobile-menu');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('open');
+  });
+
+  // Search Toggle
+  const searchWrapper = document.getElementById('search-wrapper');
+  const searchToggle = document.getElementById('search-toggle');
+
+  searchToggle.addEventListener('click', () => {
+    searchWrapper.classList.toggle('active');
+    searchWrapper.querySelector('input').focus();
+  });
+  </script>
