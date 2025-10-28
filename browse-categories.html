@@ -7,60 +7,125 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/navbar.css">
   <link rel="stylesheet" href="assets/css/footer.css">
-  <style>
-    /* Custom styling for categories page */
-    .categories-page {
-      padding: 100px 20px 50px;
-      background: #f9fafc;
+  : 500;
     }
+  
+<style>
+  /* === CATEGORIES PAGE — BRAND STYLE === */
+.categories-page {
+  padding: 100px 40px 80px;
+  background: #F5F9FC; /* Light blue-gray background */
+  font-family: 'Lexend Deca', Avenir Next, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: #33475B;
+}
 
-    .categories-container {
-      max-width: 1000px;
-      margin: auto;
-    }
+/* Container */
+.categories-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-    .category-block {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
+/* Category Block (Card) */
+.category-block {
+  background: #FFFFFF;
+  border: 1px solid rgba(51, 71, 91, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  margin-bottom: 40px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
 
-    .category-block h2 {
-      color: #002b80;
-      margin-bottom: 0.75rem;
-    }
+.category-block:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
 
-    .subcategory-list {
-      list-style: none;
-      padding-left: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+/* Category Heading */
+.category-block h2 {
+  font-family: 'Queens', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #33475B;
+  margin-bottom: 20px;
+  border-left: 4px solid #FF7A59;
+  padding-left: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
 
-    .subcategory-list li {
-      background: #eef4ff;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
+/* Subcategory List */
+.subcategory-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
 
-    .subcategory-list li:hover {
-      background: #0047ff;
-    }
+.subcategory-list li {
+  background: #FFF1EE;
+  border-radius: 8px;
+  padding: 12px 20px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(51, 71, 91, 0.12);
+}
 
-    .subcategory-list li a {
-      text-decoration: none;
-      color: #002b80;
-      font-weight: 500;
-    }
+.subcategory-list li:hover {
+  background: #FF7A59;
+  border-color: #FF7A59;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
 
-    .subcategory-list li:hover a {
-      color: #fff;
-    }
-  </style>
+.subcategory-list li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #33475B;
+  transition: color 0.3s ease;
+}
+
+.subcategory-list li:hover a {
+  color: #FFFFFF;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1023px) {
+  .categories-page {
+    padding: 80px 30px 60px;
+  }
+
+  .category-block {
+    padding: 32px;
+  }
+
+  .category-block h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 767px) {
+  .categories-page {
+    padding: 60px 20px 40px;
+  }
+
+  .category-block {
+    padding: 24px;
+  }
+
+  .subcategory-list {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .subcategory-list li {
+    text-align: center;
+  }
+}
+</style>
+  
 </head>
 <body>
   <!-- Navbar -->
@@ -174,4 +239,5 @@
   <script src="assets/js/main.js"></script>
 </body>
                 </html>
+
 
