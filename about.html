@@ -7,75 +7,98 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/navbar.css">
   <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/about.css">
 </head>
 <body>
   <!-- Navbar -->
   <div id="navbar"></div>
 
+  <!-- Main Content -->
   <main class="about-page">
     <section class="container">
       <h1>About Tech AI Site</h1>
-      <p>Welcome to <strong>Tech AI Site</strong> — your trusted source for the latest in technology, AI tools, gadgets, and digital innovation. We bring you unbiased reviews, practical guides, and updates on what’s shaping the future of tech.</p>
+      <p>
+        Welcome to <strong>Tech AI Site</strong>, a leading hub for technology enthusiasts, innovators, and professionals seeking the most accurate, up-to-date, and insightful information in the fast-paced world of technology and artificial intelligence. Our platform is dedicated to bridging the gap between complex technological advancements and everyday users by delivering clear, accessible, and thoroughly researched content that empowers our audience to understand and leverage cutting-edge digital tools.
+      </p>
+      <p>
+        Since our inception, we have committed ourselves to being at the forefront of digital innovation coverage, covering everything from breakthrough AI applications to the latest consumer electronics, ensuring our readers never miss a beat in this dynamic landscape. Our passion is driven by a genuine belief that technology, when understood and applied properly, can significantly enhance productivity, creativity, and quality of life across various industries and personal endeavors.
+      </p>
 
       <h2>Our Mission</h2>
-      <p>Our mission is to empower creators, developers, and everyday users by simplifying technology and helping them make smarter decisions through expert insights, honest reviews, and practical comparisons.</p>
+      <p>
+        At Tech AI Site, our mission is rooted in a steadfast dedication to educating and empowering our global community — creators, developers, business leaders, educators, and everyday users alike. We strive to demystify emerging technologies by breaking down complex concepts into practical, actionable insights that inform smarter purchasing decisions, foster technological literacy, and encourage innovative thinking.
+      </p>
+      <p>
+        By maintaining rigorous standards of accuracy, integrity, and transparency, we aim to build lasting trust with our readers. Our goal is to serve not just as a news outlet but as a trusted advisor and partner in your journey through the evolving digital frontier.
+      </p>
 
       <h2>What We Cover</h2>
       <ul>
-        <li>Tech News & Reviews — phones, laptops, wearables, and more.</li>
-        <li>AI Tools & Productivity Software for modern workflows.</li>
-        <li>In-depth Product Comparisons and Buying Guides.</li>
+        <li>
+          <strong>Comprehensive Technology News & Reviews:</strong> From pioneering smartphones and laptops to wearable technology and smart home devices, we provide in-depth reviews grounded in hands-on testing, expert analysis, and comparative assessments to help you identify innovations and trends that truly matter.
+        </li>
+        <li>
+          <strong>Artificial Intelligence Tools & Software:</strong> We explore the transformative potential of AI and machine learning-powered applications designed to revolutionize workflows, enhance decision-making, and optimize operational efficiency in both personal and professional settings.
+        </li>
+        <li>
+          <strong>Expert Buying Guides & Detailed Product Comparisons:</strong> Our guides merge market research with user-centric evaluations to offer step-by-step advice, highlighting key features, pros, cons, and best-use cases so you can confidently invest in technology solutions tailored to your needs.
+        </li>
+        <li>
+          <strong>Industry Trends & Future Tech Insights:</strong> Beyond product reviews, we analyze broader technology trends, regulatory developments, and ethical considerations, offering a holistic perspective on how AI and emerging tech will impact society and the global economy.
+        </li>
       </ul>
 
-      <h2>Why Choose Us</h2>
-      <p>We combine passion for technology with real-world experience — giving you the latest updates, hands-on product tests, and the best AI tools worth trying.</p>
+      <h2>Why Choose Tech AI Site</h2>
+      <p>
+        Choosing Tech AI Site means choosing a platform built on passion, expertise, and a relentless pursuit of excellence. Our multidisciplinary team of technology journalists, AI specialists, software developers, and product testers collaborate to ensure every piece of content meets the highest standards of credibility and usefulness.
+      </p>
+      <p>
+        We pride ourselves on providing more than just information; we offer a comprehensive resource designed to save you time, reduce research fatigue, and enhance your confidence in navigating the complexities of modern technology. Whether you are an industry expert, a budding developer, or a casual tech enthusiast, our content is crafted with your unique perspective in mind.
+      </p>
+      <p>
+        Furthermore, we actively engage with our community through feedback channels, surveys, and interactive features, ensuring that we stay responsive to your needs and continue evolving in step with technological advancements and reader expectations.
+      </p>
 
       <div class="highlight-box">
-        <p><strong>We believe technology should make life easier, smarter, and more creative.</strong></p>
+        <p><strong>We believe in the transformative power of technology to unleash human potential, foster creativity, and build a smarter, more connected world — and we are committed to being your trusted guide on this inspiring journey.</strong></p>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
   <div id="footer"></div>
-  <!-- Footer Container -->
-<footer id="site-footer"></footer>
+  <footer id="site-footer"></footer>
 
-<!-- Footer Loader Script -->
-<script>
-  // Dynamically load footer and fix relative links
-  async function loadFooter() {
-    try {
-      // Detect folder depth to adjust relative paths
-      const pathParts = window.location.pathname.split("/").filter(Boolean);
-      const depth = pathParts.length > 1 ? pathParts.length - 1 : 0;
-      const basePath = "../".repeat(depth);
+  <!-- Footer Loader Script -->
+  <script>
+    async function loadFooter() {
+      try {
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        const depth = pathParts.length > 1 ? pathParts.length - 1 : 0;
+        const basePath = "../".repeat(depth);
 
-      // Load footer HTML
-      const res = await fetch(basePath + "components/footer.html");
-      if (!res.ok) throw new Error("Failed to load footer");
-      const html = await res.text();
-      document.getElementById("site-footer").innerHTML = html;
+        const res = await fetch(basePath + "components/footer.html");
+        if (!res.ok) throw new Error("Failed to load footer");
+        const html = await res.text();
+        document.getElementById("site-footer").innerHTML = html;
 
-      // Fix relative links inside footer
-      document.querySelectorAll("#site-footer a").forEach(link => {
-        let href = link.getAttribute("href");
-        if (href.startsWith("../")) {
-          link.href = basePath + href.replace(/^(\.\.\/)+/, "");
-        }
-      });
+        document.querySelectorAll("#site-footer a").forEach(link => {
+          let href = link.getAttribute("href");
+          if (href.startsWith("../")) {
+            link.href = basePath + href.replace(/^(\.\.\/)+/, "");
+          }
+        });
 
-      console.log("✅ Footer loaded successfully");
-    } catch (err) {
-      console.error(err);
+        console.log("✅ Footer loaded successfully");
+      } catch (err) {
+        console.error(err);
+      }
     }
-  }
 
-  loadFooter();
-</script>
+    loadFooter();
+  </script>
 
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
-
