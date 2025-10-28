@@ -26,6 +26,34 @@ document.querySelector('.ad-prev').addEventListener('click', prevAd);
 
 // Auto slide every 7 seconds
 adInterval = setInterval(nextAd, 7000);
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".ad-slide");
+  const prevBtn = document.querySelector(".ad-prev");
+  const nextBtn = document.querySelector(".ad-next");
+  let currentIndex = 0;
+
+  const showSlide = index => {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+  };
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  });
+
+  // Auto-slide every 5 seconds
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }, 5000);
+});
 
 // Pause on hover
 const carousel = document.querySelector('.ad-carousel');
@@ -39,3 +67,4 @@ adSlides.forEach(slide => {
     // You can send this data to Firebase analytics
   });
 });
+
