@@ -73,6 +73,11 @@
   <!-- Footer -->
   <footer id="site-footer"></footer>
 
+  <!-- ===== Hidden Admin Login Link ===== -->
+  <div class="admin-login-section">
+    <a href="/login.html" class="admin-login-link">Admin Login</a>
+  </div>
+
   <!-- JS -->
   <script src="assets/js/navbar.js"></script>
   <script src="assets/js/main.js"></script>
@@ -103,12 +108,33 @@
         showSlide(currentIndex);
       });
 
-      // Optional: Auto-slide every 5 seconds
+      // Auto-slide every 5 seconds
       setInterval(() => {
         currentIndex = (currentIndex + 1) % slides.length;
         showSlide(currentIndex);
       }, 5000);
     });
   </script>
+
+  <!-- Admin Login Link Styling -->
+  <style>
+    .admin-login-section {
+      text-align: center;
+      padding: 0.5rem 0 1rem;
+      background: #0d0d0d;
+    }
+
+    .admin-login-link {
+      color: #777;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .admin-login-link:hover {
+      color: #fff;
+    }
+  </style>
+
 </body>
 </html>
