@@ -1,19 +1,29 @@
 <!-- components/post-card.html -->
 <article class="post-card">
   <a href="#" class="post-link" aria-label="Read full post">
+    <!-- Post Image -->
     <div class="post-image">
       <img src="../assets/images/posts/sample-post.jpg" 
            alt="Sample Post Title Goes Here" 
            loading="lazy">
     </div>
 
+    <!-- Post Content -->
     <div class="post-content">
-      <h2 class="post-title">Sample Post Title Goes Here</h2>
+      <!-- Optional Category Tag -->
+      <span class="post-category">Tech News</span>
+
+      <!-- Post Title -->
+      <h3 class="post-title">Sample Post Title Goes Here</h3>
+
+      <!-- Post Excerpt -->
       <p class="post-excerpt">
         This is a short excerpt of the post to give visitors a quick idea of the content. 
         Lorem ipsum dolor sit amet...
       </p>
-      <button class="read-more" type="button">Read More →</button>
+
+      <!-- Read More Button -->
+      <span class="read-more">Read More →</span>
     </div>
   </a>
 </article>
