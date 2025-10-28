@@ -24,7 +24,7 @@
 /* Flex container */
 .navbar .container {
   display: flex;
-  align-items: center;
+  align-items: right;
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
@@ -121,7 +121,7 @@
 .search-wrapper {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: right;
   transition: width 0.3s ease;
   overflow: hidden;
   width: 30px; /* initial as icon only */
@@ -202,3 +202,4 @@
     width: calc(100% - 40px);
   }
 }
+
