@@ -194,8 +194,59 @@
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer id="site-footer" role="contentinfo"></footer>
+  <!-- Footer Container -->
+  <footer id="site-footer"></footer>
+      <!-- Footer Loader Script -->
+  <script>
+    // Dynamically load footer and fix relative links
+    async function loadFooter() {
+      try {
+        const pathParts = window.location.pathname.split("/").filter(Boolean);
+        const depth = pathParts.length > 1 ? pathParts.length - 1 : 0;
+        const basePath = "../".repeat(depth);
+        const res = await fetch(basePath + "components/footer.html");
+        if (!res.ok) throw new Error("Failed to load footer");
+        const html = await res.text();
+        document.getElementById("site-footer").innerHTML = html;
+
+        // Fix relative links inside footer
+        document.querySelectorAll("#site-footer a").forEach(link => {
+          let href = link.getAttribute("href");
+          if (href && href.startsWith("../")) {
+            link.href = basePath + href.replace(/^(\.\.\/)+/, "");
+          }
+        });
+
+        console.log("✅ Footer loaded successfully");
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    loadFooter();
+  const form = document.getElementById('contactForm');
+  const popup = document.getElementById('thankYouPopup');
+  const closePopup = document.getElementById('closePopup');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // stop actual submission
+    popup.style.display = 'flex';
+    form.reset();
+  });
+
+  closePopup.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+
+  // Close when clicking outside the popup
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) popup.style.display = 'none';
+  });
+  </script>
+
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/main.js"></script>
+    
 
   <!-- JS -->
   <script src="../assets/js/footer.js"></script>
