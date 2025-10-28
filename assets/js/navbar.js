@@ -1,20 +1,18 @@
-// assets/js/navbar.js
 document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".menu-toggle");
   const navLinks = document.querySelector(".nav-links");
   const dropdownToggles = document.querySelectorAll(".dropdown > a");
-  const searchWrappers = document.querySelectorAll(".search-wrapper");
-  const header = document.querySelector(".navbar");
+  const searchWrapper = document.querySelector(".search-wrapper");
+  const input = searchWrapper?.querySelector("input");
+  const button = searchWrapper?.querySelector("button");
 
   // --- Mobile Menu Toggle ---
-  if (navToggle) {
-    navToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-      navToggle.classList.toggle("open");
-    });
-  }
+  navToggle?.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    navToggle.classList.toggle("open");
+  });
 
-  // --- Dropdown toggle on mobile ---
+  // --- Dropdown Toggle on Mobile ---
   dropdownToggles.forEach(toggle => {
     toggle.addEventListener("click", e => {
       if (window.innerWidth <= 768) {
@@ -25,46 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Sticky Navbar on scroll ---
-  window.addEventListener("scroll", () => {
-    if (header) {
-      header.classList.toggle("scrolled", window.scrollY > 50);
-    }
-  });
-
   // --- Search Expand / Collapse ---
-  searchWrappers.forEach(wrapper => {
-    const input = wrapper.querySelector("input");
-    const button = wrapper.querySelector("button");
-
-    button.addEventListener("click", () => {
-      wrapper.classList.toggle("active");
-      if (wrapper.classList.contains("active")) {
-        input.focus();
-      }
-    });
-
-    // Trigger search on Enter key
-    input.addEventListener("keypress", e => {
-      if (e.key === "Enter") {
-        const query = input.value.trim();
-        if (query) {
-          window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
-        }
-      }
-    });
+  button?.addEventListener("click", () => {
+    searchWrapper.classList.toggle("active");
+    if (searchWrapper.classList.contains("active")) input.focus();
   });
 
-  // --- Global Search Button Click ---
-  searchWrappers.forEach(wrapper => {
-    const input = wrapper.querySelector("input");
-    const button = wrapper.querySelector("button");
-
-    button.addEventListener("click", () => {
+  input?.addEventListener("keypress", e => {
+    if (e.key === "Enter") {
       const query = input.value.trim();
-      if (query) {
-        window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
-      }
-    });
+      if (query) window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
+    }
   });
 });
