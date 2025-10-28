@@ -14,7 +14,7 @@
 </head>
 <body>
 
-  <!-- Navbar (loaded dynamically by main.js) -->
+  <!-- Navbar -->
   <header id="site-navbar"></header>
 
   <!-- Hero Slider -->
@@ -41,8 +41,8 @@
           <p>Find the best tech deals in Kenya.</p>
         </div>
       </div>
-      <button class="prev">&#10094;</button>
-      <button class="next">&#10095;</button>
+      <button class="prev" aria-label="Previous Slide">&#10094;</button>
+      <button class="next" aria-label="Next Slide">&#10095;</button>
     </div>
   </section>
 
@@ -77,9 +77,41 @@
   <footer id="site-footer"></footer>
 
   <!-- JS -->
-  <script src="assets/js/main.js"></script>
   <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/main.js"></script>
   <script src="assets/js/ads.js"></script>
   <script src="assets/js/footer.js"></script>
+
+  <!-- Optional: Hero Slider Controls -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('.hero-slider .slide');
+      const prevBtn = document.querySelector('.hero-slider .prev');
+      const nextBtn = document.querySelector('.hero-slider .next');
+      let currentIndex = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+      });
+
+      // Optional: Auto-slide every 5 seconds
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        showSlide(currentIndex);
+      }, 5000);
+    });
+  </script>
 </body>
 </html>
