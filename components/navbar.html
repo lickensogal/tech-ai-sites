@@ -1,89 +1,35 @@
-<!-- Navbar -->
+<!-- components/navbar.html -->
 <nav class="navbar">
   <div class="container">
     <!-- Logo -->
     <a href="index.html" class="logo">TechAI</a>
 
-    <!-- Search Icon & Input -->
-    <div class="search-wrapper" id="search-wrapper">
-      <input type="text" placeholder="Search..." />
-      <button id="search-toggle">&#128269;</button>
-    </div>
-
-    <!-- Hamburger for Mobile -->
-    <div class="menu-toggle" id="mobile-menu">
-      <span></span>
-      <span></span>
-      <span></span>
+    <!-- Search -->
+    <div class="search-wrapper">
+      <input type="text" placeholder="Search..." aria-label="Search">
+      <button type="button" aria-label="Search">
+        🔍
+      </button>
     </div>
 
     <!-- Nav Links -->
     <ul class="nav-links">
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-
-      <!-- Tech News & Reviews -->
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="browse-categories.html">Categories</a></li>
       <li class="dropdown">
-        <a href="#">Tech News & Reviews ▾</a>
+        <a href="#">More ▼</a>
         <ul class="dropdown-menu">
-          <li><a href="../pages/tech-news-reviews/phones.html">Phones</a></li>
-          <li><a href="../pages/tech-news-reviews/laptops.html">Laptops</a></li>
-          <li><a href="../pages/tech-news-reviews/accessories.html">Accessories</a></li>
-          <li><a href="../pages/tech-news-reviews/wearables.html">Wearables</a></li>
-          <li><a href="../pages/tech-news-reviews/cameras-drones.html">Cameras & Drones</a></li>
-          <li><a href="../pages/tech-news-reviews/home-tech-smart-gadgets.html">Home Tech & Smart Gadgets</a></li>
-          <li><a href="../pages/tech-news-reviews/gaming-tech.html">Gaming Tech</a></li>
-          <li><a href="../pages/tech-news-reviews/emerging-tech-innovations.html">Emerging Tech / Innovations</a></li>
-          <li><a href="../pages/tech-news-reviews/software-apps.html">Software & Apps</a></li>
-          <li><a href="../pages/tech-news-reviews/tech-events-launches.html">Tech Events / Launches</a></li>
-        </ul>
-      </li>
-
-      <!-- AI & Productivity Tools -->
-      <li class="dropdown">
-        <a href="#">AI & Productivity Tools ▾</a>
-        <ul class="dropdown-menu">
-          <li><a href="../pages/ai-productivity-tools/ai-tools.html">AI Tools</a></li>
-          <li><a href="../pages/ai-productivity-tools/productivity-software.html">Productivity Software</a></li>
-          <li><a href="../pages/ai-productivity-tools/apps.html">Apps</a></li>
-          <li><a href="../pages/ai-productivity-tools/online-services.html">Online Services</a></li>
-          <li><a href="../pages/ai-productivity-tools/ai-writing-tools.html">AI Writing Tools</a></li>
-          <li><a href="../pages/ai-productivity-tools/ai-design-tools.html">AI Design Tools</a></li>
-          <li><a href="../pages/ai-productivity-tools/ai-coding-tools.html">AI Coding Tools</a></li>
-          <li><a href="../pages/ai-productivity-tools/tips-tutorials.html">Tips & Tutorials</a></li>
-        </ul>
-      </li>
-
-      <!-- Product Comparisons -->
-      <li class="dropdown">
-        <a href="#">Product Comparisons ▾</a>
-        <ul class="dropdown-menu">
-          <li><a href="../pages/product-comparisons/phones.html">Phones</a></li>
-          <li><a href="../pages/product-comparisons/laptops-tablets.html">Laptops & Tablets</a></li>
-          <li><a href="../pages/product-comparisons/software.html">Software</a></li>
-          <li><a href="../pages/product-comparisons/accessories.html">Accessories</a></li>
-          <li><a href="../pages/product-comparisons/wearables.html">Wearables</a></li>
-          <li><a href="../pages/product-comparisons/cameras-drones.html">Cameras & Drones</a></li>
-          <li><a href="../pages/product-comparisons/ai-tools.html">AI Tools</a></li>
-          <li><a href="../pages/product-comparisons/home-tech-smart-gadgets.html">Home Tech / Smart Gadgets</a></li>
-        </ul>
-      </li>
-
-      <!-- Buying Guides & Tips -->
-      <li class="dropdown">
-        <a href="#">Buying Guides & Tips ▾</a>
-        <ul class="dropdown-menu">
-          <li><a href="../pages/buying-guides-tips/beginners-guides.html">Beginners Guides</a></li>
-          <li><a href="../pages/buying-guides-tips/how-to-articles.html">How-To Articles</a></li>
-          <li><a href="../pages/buying-guides-tips/tips-tricks.html">Tips & Tricks</a></li>
-          <li><a href="../pages/buying-guides-tips/best-buys-kenya.html">Best Buys in Kenya</a></li>
-          <li><a href="../pages/buying-guides-tips/price-comparisons-deals.html">Price Comparisons / Deals</a></li>
-          <li><a href="../pages/buying-guides-tips/recommended-tools-apps-lists.html">Recommended Tools / Apps Lists</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </li>
     </ul>
+
+    <!-- Hamburger Menu (mobile) -->
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 </nav>
-
-<!-- Navbar Scripts -->
-<script src="assets/js/navbar.js"></script>
