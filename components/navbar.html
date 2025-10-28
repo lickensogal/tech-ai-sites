@@ -1,11 +1,12 @@
+<!-- Navbar -->
 <nav class="navbar">
   <div class="container">
     <!-- Logo -->
     <a href="index.html" class="logo">TechAI</a>
 
-    <!-- Search Wrapper -->
+    <!-- Search Icon & Input -->
     <div class="search-wrapper" id="search-wrapper">
-      <input type="text" id="globalSearchInput" placeholder="Search..." />
+      <input type="text" placeholder="Search..." />
       <button id="search-toggle">&#128269;</button>
     </div>
 
@@ -85,42 +86,4 @@
 </nav>
 
 <!-- Navbar Scripts -->
-<script>
-  // Mobile Menu Toggle
-  const menuToggle = document.getElementById('mobile-menu');
-  const navLinks = document.querySelector('.nav-links');
-
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('open');
-  });
-
-  // Search Toggle
-  const searchWrapper = document.getElementById('search-wrapper');
-  const searchToggle = document.getElementById('search-toggle');
-
-  searchToggle.addEventListener('click', () => {
-    searchWrapper.classList.toggle('active');
-    searchWrapper.querySelector('input').focus();
-  });
-
-  // Global Search Function
-  const globalSearchInput = document.getElementById('globalSearchInput');
-  const globalSearchBtn = document.getElementById('search-toggle');
-
-  globalSearchBtn.addEventListener('click', () => {
-    const query = globalSearchInput.value.trim();
-    if(query) {
-      window.location.href = `search.html?q=${encodeURIComponent(query)}`;
-    }
-  });
-
-  globalSearchInput.addEventListener('keypress', (e) => {
-    if(e.key === 'Enter') {
-      const query = globalSearchInput.value.trim();
-      if(query) {
-        window.location.href = `search.html?q=${encodeURIComponent(query)}`;
-      }
-    }
-  });
-            </script>
+<script src="assets/js/navbar.js"></script>
